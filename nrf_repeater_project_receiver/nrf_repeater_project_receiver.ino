@@ -7,22 +7,57 @@
 * Library: TMRh20/RF24, https://github.com/tmrh20/RF24/
 */
 
+#include <nrf_repeater_project.h>
+#include <DHT11.h>
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
 #include <toneAC.h>
+#include <NOKIA5110_TEXT.h>
 
+DHT11 dht11( 19 );            // Declare DHT11 temp sensor instance
+
+SensorStruct_t sensorData;    // Declare structure to hold received data
+
+// LCD Nokia 5110 pinout left to right
+// RST / CE / DC / DIN / CLK / VCC /LIGHT / GND
+#define RST 0
+#define CE 1
+#define DC 2
+#define DIN 3
+#define CLK 4
+
+// Create an LCD object
+NOKIA5110_TEXT mylcd(RST, CE, DC, DIN, CLK);
+
+#define inverse  false // set to true to invert display pixel color
+#define contrast 0xb7 // default is 0xBF set in LCDinit, Try 0xB1 <-> 0xBF if your display is too dark/dim
+#define bias 0x13 // LCD bias mode 1:48: Try 0x12 or 0x13 or 0x14
+
+#define BACKLIGHT 6
+
+void
+flashLCD( int times, int duration )
+{
+  for( int x=0; x<times; x++ )
+  {
+    digitalWrite( BACKLIGHT, LOW );
+    delay( duration );
+    digitalWrite( BACKLIGHT, HIGH );
+    delay( duration );
+  }
+}
 void tone1( void )
 {
   
-  for(int x=0; x<3; x++)
+  //for(int x=0; x<8; x++)
   {
-    for( int tone=400; tone<2000; tone ++)
+    for( int tone=400; tone<1000; tone ++)
     {
       toneAC(tone);
       //delay(2);
     }
-        for( int tone=2000; tone>400; tone --)
+        for( int tone=1000; tone>400; tone --)
     {
       toneAC(tone);
       //delay(2);
@@ -31,27 +66,119 @@ void tone1( void )
   }
 }
 
+extern volatile unsigned long timer0_overflow_count;
+
 
 RF24 radio(7, 8); // CE, CSN
 #define BUZZER 9
-const uint64_t pipe2 = 0xF0F0F0F0A2;
-char text[32]="";
+#define BACKLIGHT 6
+#define PINGLED 5
 
+
+int radCnt = 0;
+int pingCount = 0;
 
 void setup() {
-  Serial.begin(9600);
+  pinMode( BACKLIGHT, OUTPUT );
+  digitalWrite( BACKLIGHT, HIGH );
+
+  pinMode( PINGLED, OUTPUT );
+
+  pinMode( 19, INPUT );
+  
+  delay(50);
+  mylcd.LCDInit(inverse, contrast, bias); // init  the lCD
+  mylcd.LCDClear(0x00); // Clear whole screen
+  mylcd.LCDFont(LCDFont_Default); // Set the font
+  mylcd.LCDgotoXY(0, 0); // (go to (X , Y) (0-84 columns, 0-5 blocks) top left corner
+  //mylcd.LCDgotoXY(0, 2);
+  //mylcd.LCDString("Ping Count:");
+  //Serial.begin(9600);
   radio.begin();
-  radio.openReadingPipe(1, pipe2);
-  radio.setPALevel(RF24_PA_LOW);
+  radio.openReadingPipe(1, pipeReceiver);
+  radio.setPALevel( RF24_PA_LOW );
   radio.setDataRate( RF24_250KBPS );
   radio.startListening();
   tone1();
 } 
 
 void loop() {
+  int temp, humid;
+
+  dht11.readTemperatureHumidity( temp, humid );
+  sensorData.sensorTemp = temp;
+  sensorData.sensorHumid = humid;
+
+  mylcd.LCDgotoXY( 0, 0 );
+  mylcd.print( "Loc: ");
+  mylcd.print( temp );
+  mylcd.print( "C " );
+  mylcd.print( humid );
+  mylcd.print( "%" );
+
   if (radio.available()) {
-    radio.read(&text, sizeof(text));
-    tone1();
-    Serial.println(text);
+    radio.read(&sensorData, sizeof(sensorData));
+
+ // ----------------------------------------
+ // Read Sensor 1 (Classroom)
+ // ----------------------------------------
+    if( sensorData.sensorID == SENSOR1 )
+    {
+      mylcd.LCDgotoXY(0, 2);
+      mylcd.LCDString("CR:  ");
+      mylcd.print( (int)sensorData.sensorTemp );
+      mylcd.print( "C " );
+      mylcd.print( (int)sensorData.sensorHumid );
+      mylcd.print( "% " );
+
+      mylcd.LCDgotoXY( 7, 3 );
+      if( sensorData.dataType & HB )
+      {
+        mylcd.print( "HB  " );
+        flashLCD( 1+pingCount, 50 );
+      }
+      else if( sensorData.dataType & PING )
+      {
+        mylcd.print( "PING PC:" );
+        pingCount++;
+        for( int x=0; x<pingCount; x++)
+          tone1();
+        mylcd.print( pingCount );
+        flashLCD( pingCount, 200 );
+      }
+      if( pingCount )
+        for( int x=0; x<pingCount; x++ )
+        {
+          digitalWrite( PINGLED, LOW );
+          delay( 200 );
+          digitalWrite( PINGLED, HIGH );
+          delay( 200 );
+        }
+    }
+    else if( sensorData.sensorID == 2 )
+    {
+      mylcd.LCDgotoXY(0, 2);
+      mylcd.LCDString("FD:  ");
+      mylcd.print(temp );
+      mylcd.print( "C " );
+      mylcd.print( humid );
+      mylcd.print( "% " );
+
+      mylcd.LCDgotoXY( 7, 3 );
+      if( sensorData.dataType & HB )
+      {
+        mylcd.print( "HB  " );
+        flashLCD( 1+pingCount, 50 );
+      }
+      else if( sensorData.dataType & PING )
+      {
+        mylcd.print( "PING PC:" );
+        pingCount++;
+        for( int x=0; x<pingCount; x++)
+          tone1();
+        mylcd.print( pingCount );
+        flashLCD( pingCount, 200 );
+      }
+    }
   }
 }
