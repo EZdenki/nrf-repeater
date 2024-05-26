@@ -184,17 +184,18 @@ void loop() {
       mylcd.print( (int)sensorData.sensorHumid );
       mylcd.print( "% " );
 
-      mylcd.LCDgotoXY( 7, 5 );
+      mylcd.LCDgotoXY( 0, 5 );
       if( sensorData.dataType & HB )
       {
         mylcd.print( "    " );
         delay( 300 );
-        mylcd.LCDgotoXY( 7, 5 );
-        mylcd.print( "HB  " );
+        mylcd.LCDgotoXY( 0, 5 );
+        //mylcd.print( "HB " );
+        mylcd.print( sensorData.batV );
       }
       else if( sensorData.dataType & PING )
       {
-        mylcd.print( "PING PC:" );
+        mylcd.print( "PNG PC:" );
         pingCount++;
         for( int x=0; x<pingCount; x++)
           tone1();

@@ -13,7 +13,8 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-#define PIR 19                    // PIR output on D15
+#define PIR 16        // PIR sensor output on D16
+#define BATPIN A4     // Battery voltage divider output on D18/A4
 #define ACTLED 8
 
 DHT11 dht11( 2 );
@@ -39,6 +40,8 @@ void setup()
   pinMode( PIR, INPUT );          // Define PIR pin as input
   pinMode( ACTLED, OUTPUT );
 
+  analogReference( INTERNAL1V1 );
+
   flashLED( ACTLED, 3, 100 );
   
   radio.begin();
@@ -54,6 +57,8 @@ void loop() {
   unsigned long timePassed;
   int pirGet;
   int temp, humid;
+  float batV;
+
   do
   {
     pirGet = digitalRead( PIR );
@@ -75,7 +80,17 @@ void loop() {
     sensorData.dataType = HB | TEMP | HUMID;      // Send heartbeat, temp, and humid data.
     flashLED( ACTLED, 1, 50 );
   }
-  
+
+  batV = 0;
+  for( int x=0; x<10; x++ ) ;     // Let ADC settle
+  for( int x=0; x<10; x++ )
+  {
+    batV += analogRead( BATPIN );
+  }
+  batV /= (float)10;
+  sensorData.batVRaw = batV;
+  sensorData.batV = (float)batV/207.778+0.1294;
+
   radio.write(&sensorData, sizeof(sensorData));
   delay(5000);
 }
