@@ -73,18 +73,20 @@ RF24 radio(7, 8); // CE, CSN
 #define BUZZER 9
 #define BACKLIGHT 6
 #define PINGLED 5
+#define BATPIN A4
 
 
 int radCnt = 0;
 int pingCount = 0;
 
 void setup() {
+  
   pinMode( BACKLIGHT, OUTPUT );
   digitalWrite( BACKLIGHT, HIGH );
 
   pinMode( PINGLED, OUTPUT );
-
   pinMode( 19, INPUT );
+  analogReference( INTERNAL1V1 );
   
   delay(50);
   mylcd.LCDInit(inverse, contrast, bias); // init  the lCD
@@ -104,6 +106,21 @@ void setup() {
 
 void loop() {
   int temp, humid;
+  float batV;
+
+  batV = 0;
+  for( int x=0; x<100; x++ )
+  {
+    batV += analogRead( BATPIN );
+  }
+  batV /= 100;
+//  batV = analogRead( BATPIN );
+  mylcd.LCDgotoXY(0, 1 );
+  mylcd.print("Bat:");
+  mylcd.print( (int)batV );
+  mylcd.print( " " );
+  mylcd.print( batV/211.63 - 0.1208 );
+  
 
   dht11.readTemperatureHumidity( temp, humid );
   sensorData.sensorTemp = temp;
@@ -125,7 +142,7 @@ void loop() {
     if( sensorData.sensorID == SENSOR1 )
     {
       mylcd.LCDgotoXY(0, 2);
-      mylcd.LCDString("CR:  ");
+      mylcd.LCDString("FD:  ");
       mylcd.print( (int)sensorData.sensorTemp );
       mylcd.print( "C " );
       mylcd.print( (int)sensorData.sensorHumid );
@@ -134,6 +151,9 @@ void loop() {
       mylcd.LCDgotoXY( 7, 3 );
       if( sensorData.dataType & HB )
       {
+        mylcd.print( "    " );
+        delay( 300 );
+        mylcd.LCDgotoXY( 7, 3 );
         mylcd.print( "HB  " );
         flashLCD( 1+pingCount, 50 );
       }
@@ -155,20 +175,22 @@ void loop() {
           delay( 200 );
         }
     }
-    else if( sensorData.sensorID == 2 )
+    else if( sensorData.sensorID == SENSOR2 )
     {
-      mylcd.LCDgotoXY(0, 2);
-      mylcd.LCDString("FD:  ");
-      mylcd.print(temp );
+      mylcd.LCDgotoXY(0, 4);
+      mylcd.LCDString("CR:  ");
+      mylcd.print( (int)sensorData.sensorTemp );
       mylcd.print( "C " );
-      mylcd.print( humid );
+      mylcd.print( (int)sensorData.sensorHumid );
       mylcd.print( "% " );
 
-      mylcd.LCDgotoXY( 7, 3 );
+      mylcd.LCDgotoXY( 7, 5 );
       if( sensorData.dataType & HB )
       {
+        mylcd.print( "    " );
+        delay( 300 );
+        mylcd.LCDgotoXY( 7, 5 );
         mylcd.print( "HB  " );
-        flashLCD( 1+pingCount, 50 );
       }
       else if( sensorData.dataType & PING )
       {
@@ -177,8 +199,15 @@ void loop() {
         for( int x=0; x<pingCount; x++)
           tone1();
         mylcd.print( pingCount );
-        flashLCD( pingCount, 200 );
       }
+      if( pingCount )
+        for( int x=0; x<pingCount; x++ )
+        {
+          digitalWrite( PINGLED, LOW );
+          delay( 200 );
+          digitalWrite( PINGLED, HIGH );
+          delay( 200 );
+        }
     }
   }
 }

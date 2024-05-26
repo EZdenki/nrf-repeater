@@ -139,9 +139,9 @@
       <name>Trace8</name>
       <alpha>127</alpha>
       <points>
-        <point x="5.0" y="2.8"/>
+        <point x="5.2" y="2.8"/>
         <point x="5.5" y="2.8"/>
-        <point x="5.25" y="2.8"/>
+        <point x="5.35" y="2.8"/>
       </points>
       <bodyColor hex="ffffff"/>
       <borderColor hex="000000"/>
@@ -572,22 +572,24 @@
     </diylc.semiconductors.DIL__IC>
     <diylc.electromechanical.PinHeader>
       <name>PH1</name>
-      <alpha>127</alpha>
+      <alpha>101</alpha>
       <orientation>_270</orientation>
       <controlPoints>
         <point x="4.8" y="2.9"/>
         <point x="4.9" y="2.9"/>
         <point x="5.0" y="2.9"/>
         <point x="5.1" y="2.9"/>
+        <point x="5.2" y="2.9"/>
         <point x="4.8" y="2.8"/>
         <point x="4.9" y="2.8"/>
         <point x="5.0" y="2.8"/>
         <point x="5.1" y="2.8"/>
+        <point x="5.2" y="2.8"/>
       </controlPoints>
       <rowCount>2</rowCount>
-      <columnCount>4</columnCount>
+      <columnCount>5</columnCount>
       <spacing value="0.1" unit="in"/>
-      <shrouded>false</shrouded>
+      <shrouded>true</shrouded>
       <bodyColor hex="808080"/>
       <shroudColor hex="595959"/>
     </diylc.electromechanical.PinHeader>
@@ -861,8 +863,8 @@
       <name>Trace16</name>
       <alpha>127</alpha>
       <controlPoints2>
-        <point x="4.9" y="2.8"/>
-        <point x="5.1" y="2.7"/>
+        <point x="4.8" y="2.9"/>
+        <point x="5.1" y="2.6"/>
         <point x="6.2" y="3.1"/>
         <point x="6.3" y="3.6"/>
       </controlPoints2>
@@ -878,8 +880,8 @@
       <name>Trace25</name>
       <alpha>127</alpha>
       <controlPoints2>
-        <point x="4.8" y="2.9"/>
-        <point x="4.8" y="3.2"/>
+        <point x="5.2" y="2.9"/>
+        <point x="5.1" y="3.2"/>
         <point x="6.0" y="2.9"/>
         <point x="6.2" y="3.6"/>
       </controlPoints2>
@@ -895,9 +897,9 @@
       <name>Trace27</name>
       <alpha>127</alpha>
       <controlPoints2>
-        <point x="4.9" y="2.9"/>
-        <point x="4.9" y="3.3"/>
-        <point x="5.9" y="3.2"/>
+        <point x="5.1" y="2.9"/>
+        <point x="5.0" y="3.2"/>
+        <point x="5.9" y="3.1"/>
         <point x="6.1" y="3.6"/>
       </controlPoints2>
       <color hex="0000ff"/>
@@ -913,8 +915,8 @@
       <alpha>127</alpha>
       <controlPoints2>
         <point x="5.0" y="2.9"/>
-        <point x="5.4" y="3.0"/>
-        <point x="5.5" y="3.9"/>
+        <point x="5.0" y="3.1"/>
+        <point x="5.0" y="3.6"/>
         <point x="5.2" y="3.9"/>
       </controlPoints2>
       <color hex="0000ff"/>
@@ -993,11 +995,55 @@
       <size value="0.5" unit="mm"/>
       <layer>_1</layer>
     </diylc.connectivity.CurvedTrace>
+    <diylc.connectivity.CurvedTrace>
+      <name>Trace34</name>
+      <alpha>127</alpha>
+      <controlPoints2>
+        <point x="5.6" y="2.8"/>
+        <point x="5.6" y="3.0"/>
+        <point x="5.6" y="3.5"/>
+        <point x="5.3" y="3.9"/>
+      </controlPoints2>
+      <color hex="0000ff"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>true</smooth>
+      <lastUpdatePointIndex>-1</lastUpdatePointIndex>
+      <size value="0.5" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CurvedTrace>
+    <diylc.connectivity.CurvedTrace>
+      <name>Trace35</name>
+      <alpha>127</alpha>
+      <controlPoints2>
+        <point x="5.7" y="2.8"/>
+        <point x="5.7" y="3.0"/>
+        <point x="5.7" y="3.5"/>
+        <point x="5.4" y="3.9"/>
+      </controlPoints2>
+      <color hex="0000ff"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>true</smooth>
+      <lastUpdatePointIndex>-1</lastUpdatePointIndex>
+      <size value="0.5" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CurvedTrace>
     <diylc.misc.Label>
       <name>LAB1</name>
-      <point x="4.9" y="2.6"/>
-      <text>V  MO  G&lt;br&gt;MI CK  R</text>
-      <font name="DejaVu Sans Mono Bold" size="12" style="1"/>
+      <point x="5.055" y="2.605"/>
+      <text>VCC           GND&lt;br&gt;MOS   RES SCK MIS</text>
+      <font name="DejaVu Sans Mono Bold" size="11" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB2</name>
+      <point x="5.595" y="2.67"/>
+      <text>GND TX RX</text>
+      <font name="DejaVu Sans Mono Bold" size="11" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>CENTER</horizontalAlignment>
       <verticalAlignment>CENTER</verticalAlignment>
