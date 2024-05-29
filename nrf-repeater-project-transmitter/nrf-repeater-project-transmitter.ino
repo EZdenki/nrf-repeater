@@ -14,6 +14,7 @@
 #include <RF24.h>
 
 #define PIR 15                    // PIR output on D15
+#define BATPIN A2
 
 DHT11 dht11( 18 );
 
@@ -26,6 +27,7 @@ void setup()
   sensorData.sensorID = SENSOR1;          // This device has ID = 1
 
   pinMode( PIR, INPUT );          // Define PIR pin as input
+  analogReference( INTERNAL1V1 );
 
   radio.begin();
   radio.openWritingPipe(pipeSensor1);
@@ -40,6 +42,8 @@ void loop() {
   unsigned long timePassed;
   int pirGet;
   int temp, humid;
+  float batV;
+
   do
   {
     pirGet = digitalRead( PIR );
@@ -59,6 +63,18 @@ void loop() {
   {
     sensorData.dataType = HB | TEMP | HUMID;      // Send heartbeat, temp, and humid data.
   }
+
+  
+  batV = 0;
+  for( int x=0; x<10; x++ ) ;     // Let ADC settle
+  for( int x=0; x<10; x++ )
+  {
+    batV += analogRead( BATPIN );
+  }
+  batV /= (float)10;
+  sensorData.batVRaw = batV;
+  sensorData.batV = (float)batV/230.0+0.4174;
+
   radio.write(&sensorData, sizeof(sensorData));
   delay(5000);
 }
