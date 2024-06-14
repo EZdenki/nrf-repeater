@@ -57,6 +57,7 @@ DHT11 dht11( DHT11PIN );            // Declare DHT11 temp sensor instance
 #define DC 4
 #define DIN 5
 #define CLK 6
+#define BL 21
 
 // Create an LCD object and set LCD Constants
 NOKIA5110_TEXT mylcd(RST, CE, DC, DIN, CLK);
@@ -108,6 +109,7 @@ void tone1( void )
 SensorStruct_t sensorData;    // Declare structure to hold received data
 int pingCount1 = 0;           // Holds current ping count for sensor 1
 int pingCount2 = 0;           // Holds current ping count for sensor 1
+int BLState = LOW;
 
 // Variable to hold uC Tick counter to detect for timeouts
 extern volatile unsigned long timer0_overflow_count;
@@ -117,6 +119,10 @@ void setup() {
   pinMode( LED1PIN, OUTPUT );       // LED 1 Pin as output
   pinMode( LED2PIN, OUTPUT );       // LED 2 Pin as output
   pinMode( DHT11PIN, INPUT );       // DHT11 Sensor Pin as input
+  pinMode( BUT1PIN, INPUT_PULLUP );
+  pinMode( BUT2PIN, INPUT_PULLUP );
+  pinMode( BL, OUTPUT );
+  
   analogReference( INTERNAL1V1 );   // Set analog reference to internal 1.1V
 
   
@@ -161,6 +167,19 @@ void loop() {
   mylcd.LCDgotoXY(0, 1 );     // Display the battery voltage
   batV = batV / 211.33 + 0.1372;  // Calibration based on test results
   mylcd.print( batV );
+
+  if( !digitalRead( BUT1PIN ) )
+  {
+    BLState = ~BLState;
+    digitalWrite( BL, BLState );
+    delay(1000);
+    while( !digitalRead( BUT1PIN )) ;
+  }
+
+
+  //  ===============================
+  //  Check Radio for incoming signal
+  //  ===============================
   if (radio.available()) {    //  Check radio for data and read in data if available
     radio.read(&sensorData, sizeof(sensorData));
     mylcd.print( " R:" );
