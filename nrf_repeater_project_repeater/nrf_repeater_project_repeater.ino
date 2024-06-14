@@ -15,11 +15,14 @@
 
 RF24 radio(10, 9); // CE, CSN
 #define ACTLED 8
+#define BATPIN A0
 
 SensorStruct_t sensorData;
 
 
 void setup() {
+  analogReference( INTERNAL1V1 );   // Set analog reference to internal 1.1V
+
   sensorData.sensorID = REPEATER1;
 
   pinMode(ACTLED, OUTPUT);
@@ -41,6 +44,8 @@ void setup() {
 }
 
 void loop() {
+  float batV;   // Will hold battery voltage of repeater
+
   delay( 5 );
   radio.startListening();
   delay( 5 );
@@ -53,6 +58,16 @@ void loop() {
     delay( 50 );
     digitalWrite( ACTLED, LOW );
   }
+
+  batV = 0;                   // Start by getting local battery voltage
+  for( int x=0; x<5; x++ )    // Get some analog readings to stabilize
+    analogRead( BATPIN );
+  for( int x=0; x<5; x++ )    // Get average of 5 readings
+    batV += analogRead( BATPIN );
+  batV /= 5;
+
+  sensorData.repeaterBatV = batV/210.0+0.12381;
+
   delay( 50 );
   digitalWrite( ACTLED, HIGH );
   delay( 50 );

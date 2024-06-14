@@ -119,8 +119,9 @@ void loop() {
   mylcd.print("Bat:");
   mylcd.print( (int)batV );
   mylcd.print( " " );
-  mylcd.print( batV/211.63 - 0.1208 );
-  
+  sensorData.batV = (float)batV/230.0+0.4174;
+  mylcd.print(" ");
+  mylcd.print( sensorData.batV );  
 
   dht11.readTemperatureHumidity( temp, humid );
   sensorData.sensorTemp = temp;

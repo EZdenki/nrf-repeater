@@ -13,7 +13,10 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-#define PIR 15                    // PIR output on D15
+#define PINGTRIG 18
+#define PINGECHO 19
+
+//#define PIR 15                    // PIR output on D15
 #define BATPIN A2
 
 DHT11 dht11( 14 );
@@ -24,9 +27,13 @@ SensorStruct_t sensorData;          // Instantiate sensorData as a global
 
 void setup()
 {
+  pinMode( PINGTRIG, OUTPUT );
+
+
+
   sensorData.sensorID = SENSOR1;          // This device has ID = 1
 
-  pinMode( PIR, INPUT );          // Define PIR pin as input
+ // pinMode( PIR, INPUT );          // Define PIR pin as input
   analogReference( INTERNAL1V1 );
 
   radio.begin();
@@ -37,25 +44,45 @@ void setup()
 
 }
 
+unsigned int getPingDist( void )
+{
+  unsigned int pingTime;
+
+  digitalWrite( PINGTRIG, LOW);
+  delayMicroseconds(2);
+  digitalWrite( PINGTRIG, HIGH);
+  delayMicroseconds(5);
+  digitalWrite( PINGTRIG, LOW);
+
+  pingTime = pulseIn( PINGECHO, HIGH );
+  return pingTime /29 /2;
+
+}
+
+
 void loop() {
   unsigned long startTick = ticks();
   unsigned long timePassed;
-  int pirGet;
+  int pingDistCM;
+  //int pirGet;
   int temp, humid;
   float batV;
-
+  startTick = ticks();
   do
   {
-    pirGet = digitalRead( PIR );
+    delay( 100 );
+    pingDistCM = getPingDist();
+    // pirGet = digitalRead( PIR );
     timePassed = ticks() - startTick;
   }
-  while( pirGet && (timePassed < SensorHBTicksTO) ) ;       // Wait for PIR input
+  while( (pingDistCM > 230) && (timePassed < SensorHBTicksTO) ) ;       // Wait for PIR input
+//  while( pirGet && (timePassed < SensorHBTicksTO) ) ;       // Wait for PIR input
   
   dht11.readTemperatureHumidity( temp, humid );
   sensorData.sensorTemp = temp;
   sensorData.sensorHumid = humid;
   
-  if( !pirGet )                                   // Got a ping on the sensor
+  if( pingDistCM < 230 )                                   // Got a ping on the sensor
   {
     sensorData.dataType = PING | TEMP | HUMID;    // Send ping, temp, and humid data.
   }
@@ -75,5 +102,5 @@ void loop() {
   sensorData.batV = (float)batV/230.0+0.4174;
 
   radio.write(&sensorData, sizeof(sensorData));
-  delay(5000);
+  delay(2000);
 }

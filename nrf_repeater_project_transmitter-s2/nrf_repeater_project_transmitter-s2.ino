@@ -88,7 +88,6 @@ void loop() {
     batV += analogRead( BATPIN );
   }
   batV /= (float)10;
-  sensorData.batVRaw = batV;
   sensorData.batV = (float)batV/207.778+0.1294;
 
   radio.write(&sensorData, sizeof(sensorData));
