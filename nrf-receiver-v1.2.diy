@@ -2315,7 +2315,7 @@
     <diylc.misc.Label>
       <name>LAB13</name>
       <point x="6.0" y="1.4"/>
-      <text>nRF Receiver V1.1</text>
+      <text>nRF Receiver V1.2</text>
       <font name="DejaVu Sans Mono Bold" size="30" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>CENTER</horizontalAlignment>
@@ -2324,8 +2324,8 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB14</name>
-      <point x="3.0" y="5.55"/>
-      <text>CAPS:&lt;br&gt;1x 100 nF&lt;br&gt;1x 1 uF&lt;br&gt;1x 2.2 uF&lt;br&gt;1x 10 uF&lt;br&gt;1x 220 uF</text>
+      <point x="3.02" y="5.73"/>
+      <text>CAPS:&lt;br&gt;1x 100 nF&lt;br&gt;1x 1 uF&lt;br&gt;1x 2.2 uF&lt;br&gt;1x 10 uF&lt;br&gt;1x 220 uF&lt;br&gt;&lt;br&gt;LEDS:&lt;br&gt;2x 5 mm RED&lt;br&gt;1x 3 mm YELLOW</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>LEFT</horizontalAlignment>
@@ -2334,18 +2334,8 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB15</name>
-      <point x="3.6" y="5.5"/>
-      <text>RESISTORS:&lt;br&gt;4x 2.2 K&lt;br&gt;1x 5.7 K&lt;br&gt;1x 8.2 K&lt;br&gt;5x 10 K&lt;br&gt;1x 15 SMD&lt;br&gt;2x 150 SMD</text>
-      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
-      <color hex="000000"/>
-      <horizontalAlignment>LEFT</horizontalAlignment>
-      <verticalAlignment>TOP</verticalAlignment>
-      <orientation>DEFAULT</orientation>
-    </diylc.misc.Label>
-    <diylc.misc.Label>
-      <name>LAB16</name>
-      <point x="4.2" y="5.665"/>
-      <text>PIN HEADERS:&lt;br&gt;1x 28P SOCKET&lt;br&gt;1x JRC 2P&lt;br&gt;1x 2x5 Shrouded&lt;br&gt;1x 2x4&lt;br&gt;1x 1x8&lt;br&gt;2x 1x3&lt;br&gt;1x 1x4</text>
+      <point x="3.6" y="5.56"/>
+      <text>RESISTORS:&lt;br&gt;5x 2.2 K&lt;br&gt;1x 5.7 K&lt;br&gt;1x 8.2 K&lt;br&gt;5x 10 K&lt;br&gt;1x 15 SMD&lt;br&gt;2x 150 SMD</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>LEFT</horizontalAlignment>
@@ -2365,7 +2355,7 @@
     <diylc.misc.Label>
       <name>LAB18</name>
       <point x="6.4" y="5.8"/>
-      <text>ATMEGA88 IO CONNECTIONS:&lt;br&gt;P1  RESET&lt;br&gt;P2  RX  -&gt; TX&lt;br&gt;P3  TX  -&gt; RX&lt;br&gt;P4  D2  -&gt; NOKIA P1 RST&lt;br&gt;P5  D3  -&gt; NOKIA P2 CE&lt;br&gt;P6  D4  -&gt; NOKIA P3 DC&lt;br&gt;P10 D21 -&gt; NOKIA P7 BL&lt;br&gt;P11 D5  -&gt; NOKIA P4 DIN&lt;br&gt;P12 D6  -&gt; NOKIA P5 CLK&lt;br&gt;P13 D7  -&gt; LED 1&lt;br&gt;P14 D8  -&gt; LED 2</text>
+      <text>ATMEGA88 IO CONNECTIONS:&lt;br&gt;P1  RESET&lt;br&gt;P2  RX  -&gt; TX&lt;br&gt;P3  TX  -&gt; RX&lt;br&gt;P4  D2  -&gt; NOKIA P1 RST&lt;br&gt;P5  D3  -&gt; NOKIA P2 CE&lt;br&gt;P6  D4  -&gt; NOKIA P3 DC&lt;br&gt;P9  D22 -&gt; LED 3&lt;br&gt;P10 D21 -&gt; NOKIA P7 BL&lt;br&gt;P11 D5  -&gt; NOKIA P4 DIN&lt;br&gt;P12 D6  -&gt; NOKIA P5 CLK&lt;br&gt;P13 D7  -&gt; LED 1&lt;br&gt;P14 D8  -&gt; LED 2</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>LEFT</horizontalAlignment>
@@ -2431,7 +2421,7 @@
       <alpha>127</alpha>
       <controlPoints2>
         <point x="5.4" y="3.9"/>
-        <point x="5.3" y="3.9"/>
+        <point x="5.7" y="3.8"/>
         <point x="8.1" y="2.3"/>
         <point x="7.6" y="4.3"/>
       </controlPoints2>
@@ -2443,6 +2433,63 @@
       <size value="0.5" unit="mm"/>
       <layer>_1</layer>
     </diylc.connectivity.CurvedTrace>
+    <diylc.connectivity.CurvedTrace>
+      <name>Trace12</name>
+      <alpha>127</alpha>
+      <controlPoints2>
+        <point x="6.1" y="3.1"/>
+        <point x="6.1" y="3.8"/>
+        <point x="5.7" y="3.6"/>
+        <point x="5.3" y="3.9"/>
+      </controlPoints2>
+      <color hex="0000ff"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>true</smooth>
+      <lastUpdatePointIndex>-1</lastUpdatePointIndex>
+      <size value="0.5" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CurvedTrace>
+    <diylc.connectivity.CopperTrace>
+      <name>Trace73</name>
+      <alpha>127</alpha>
+      <points>
+        <point x="6.1" y="2.9999999999999996"/>
+        <point x="6.1" y="2.9"/>
+        <point x="6.1" y="2.95"/>
+      </points>
+      <bodyColor hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="000000"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <thickness value="1.0" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CopperTrace>
+    <diylc.connectivity.CopperTrace>
+      <name>Trace74</name>
+      <alpha>127</alpha>
+      <points>
+        <point x="6.1" y="2.4999999999999996"/>
+        <point x="6.1" y="2.4"/>
+        <point x="6.1" y="2.4499999999999997"/>
+      </points>
+      <bodyColor hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="000000"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <thickness value="1.0" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CopperTrace>
     <diylc.semiconductors.DiodePlastic>
       <name>D3</name>
       <alpha>127</alpha>
@@ -2465,6 +2512,61 @@
       <value>1N4148</value>
       <markerColor hex="dddddd"/>
     </diylc.semiconductors.DiodePlastic>
+    <diylc.semiconductors.LED>
+      <name>D4</name>
+      <alpha>101</alpha>
+      <length value="3.0" unit="mm"/>
+      <width value="5.0" unit="mm"/>
+      <points>
+        <point x="6.1" y="3.1"/>
+        <point x="6.1" y="3.0"/>
+        <point x="6.1" y="3.05"/>
+      </points>
+      <bodyColor hex="ffff00"/>
+      <borderColor hex="41b007"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value></value>
+    </diylc.semiconductors.LED>
+    <diylc.passive.Resistor>
+      <name>R14</name>
+      <alpha>127</alpha>
+      <length value="7.0" unit="mm"/>
+      <width value="2.3" unit="mm"/>
+      <points>
+        <point x="6.1" y="2.5"/>
+        <point x="6.1" y="2.9000000000000004"/>
+        <point x="6.1" y="2.7"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>VALUE</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="2.2" unit="K"/>
+      <power>HALF</power>
+      <colorCode>NONE</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.misc.Label>
+      <name>LAB16</name>
+      <point x="4.2" y="5.615"/>
+      <text>PIN HEADERS:&lt;br&gt;1x 28P SOCKET&lt;br&gt;1x JRC 2P&lt;br&gt;1x 2x5 Shrouded&lt;br&gt;1x 2x4&lt;br&gt;1x 1x8&lt;br&gt;2x 1x3&lt;br&gt;1x 1x4</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>TOP</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
   </components>
   <groups>
     <set/>
@@ -2474,7 +2576,7 @@
     </set>
     <set>
       <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[8]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[20]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[19]"/>
     </set>
     <set>
       <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[4]"/>
