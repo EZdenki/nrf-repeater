@@ -2354,7 +2354,7 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB18</name>
-      <point x="6.4" y="5.8"/>
+      <point x="6.295" y="5.875"/>
       <text>ATMEGA88 IO CONNECTIONS:&lt;br&gt;P1  RESET&lt;br&gt;P2  RX  -&gt; TX&lt;br&gt;P3  TX  -&gt; RX&lt;br&gt;P4  D2  -&gt; NOKIA P1 RST&lt;br&gt;P5  D3  -&gt; NOKIA P2 CE&lt;br&gt;P6  D4  -&gt; NOKIA P3 DC&lt;br&gt;P9  D22 -&gt; LED 3&lt;br&gt;P10 D21 -&gt; NOKIA P7 BL&lt;br&gt;P11 D5  -&gt; NOKIA P4 DIN&lt;br&gt;P12 D6  -&gt; NOKIA P5 CLK&lt;br&gt;P13 D7  -&gt; LED 1&lt;br&gt;P14 D8  -&gt; LED 2</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -2364,7 +2364,7 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB19</name>
-      <point x="7.71" y="5.805"/>
+      <point x="7.565" y="5.825"/>
       <text>P15 D9  -&gt; nRF CSN&lt;br&gt;P16 D10 -&gt; nRF CE&lt;br&gt;P17 D11 -&gt; nrF/ISP MOSI&lt;br&gt;P18 D12 -&gt; nrF/ISP MISO&lt;br&gt;P19 D13 -&gt; nrF/ISP SCK&lt;br&gt;P23 A0  -&gt; BATV&lt;br&gt;P24 D15 -&gt; SW 1&lt;br&gt;P25 D16 -&gt; SW 2&lt;br&gt;P26 D17 -&gt; BUZ&lt;br&gt;P28 D19 -&gt; PIR</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -2421,12 +2421,15 @@
       <alpha>127</alpha>
       <controlPoints2>
         <point x="5.4" y="3.9"/>
-        <point x="5.7" y="3.8"/>
-        <point x="8.1" y="2.3"/>
+        <point x="5.4" y="3.8"/>
+        <point x="5.4" y="3.9"/>
+        <point x="6.5" y="3.5"/>
+        <point x="7.6" y="3.1"/>
+        <point x="7.6" y="3.4"/>
         <point x="7.6" y="4.3"/>
       </controlPoints2>
       <color hex="0000ff"/>
-      <pointCount>FOUR</pointCount>
+      <pointCount>SEVEN</pointCount>
       <style>SOLID</style>
       <smooth>true</smooth>
       <lastUpdatePointIndex>-1</lastUpdatePointIndex>
@@ -2438,12 +2441,15 @@
       <alpha>127</alpha>
       <controlPoints2>
         <point x="6.1" y="3.1"/>
-        <point x="6.1" y="3.8"/>
-        <point x="5.7" y="3.6"/>
+        <point x="6.1" y="3.3"/>
+        <point x="6.13" y="3.555"/>
+        <point x="5.875" y="3.655"/>
+        <point x="5.62" y="3.755"/>
+        <point x="5.3" y="3.7"/>
         <point x="5.3" y="3.9"/>
       </controlPoints2>
       <color hex="0000ff"/>
-      <pointCount>FOUR</pointCount>
+      <pointCount>SEVEN</pointCount>
       <style>SOLID</style>
       <smooth>true</smooth>
       <lastUpdatePointIndex>-1</lastUpdatePointIndex>
