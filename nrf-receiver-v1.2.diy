@@ -12,6 +12,26 @@
   <gridSpacing value="0.1" unit="in"/>
   <dotSpacing>1</dotSpacing>
   <components>
+    <diylc.misc.Label>
+      <name>LAB21</name>
+      <point x="6.0" y="1.625"/>
+      <text>Serial Port</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="0000ff"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB22</name>
+      <point x="5.2" y="1.54"/>
+      <text>ISP Header</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="0000ff"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
     <diylc.boards.PerfBoard>
       <name>Board1</name>
       <alpha>127</alpha>
@@ -842,7 +862,7 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB7</name>
-      <point x="3.7" y="3.3"/>
+      <point x="3.7" y="3.4"/>
       <text>18650&lt;br&gt;Li-Ion</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -1640,7 +1660,7 @@
         <point x="6.1" y="4.6000000000000005"/>
         <point x="6.1" y="4.55"/>
       </points>
-      <bodyColor hex="ff0000"/>
+      <bodyColor hex="5555ff"/>
       <borderColor hex="41b007"/>
       <labelColor hex="000000"/>
       <leadColor hex="cccccc"/>
@@ -2325,7 +2345,7 @@
     <diylc.misc.Label>
       <name>LAB14</name>
       <point x="3.02" y="5.73"/>
-      <text>CAPS:&lt;br&gt;1x 100 nF&lt;br&gt;1x 1 uF&lt;br&gt;1x 2.2 uF&lt;br&gt;1x 10 uF&lt;br&gt;1x 220 uF&lt;br&gt;&lt;br&gt;LEDS:&lt;br&gt;2x 5 mm RED&lt;br&gt;1x 3 mm YELLOW</text>
+      <text>CAPS:&lt;br&gt;1x 100 nF&lt;br&gt;1x 1 uF&lt;br&gt;1x 2.2 uF&lt;br&gt;1x 10 uF&lt;br&gt;1x 220 uF&lt;br&gt;&lt;br&gt;LEDS:&lt;br&gt;1x 3 mm RED&lt;br&gt;1x 3 mm BLUE&lt;br&gt;1x 3 mm YELLOW</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>LEFT</horizontalAlignment>
@@ -2334,8 +2354,8 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB15</name>
-      <point x="3.6" y="5.56"/>
-      <text>RESISTORS:&lt;br&gt;5x 2.2 K&lt;br&gt;1x 5.7 K&lt;br&gt;1x 8.2 K&lt;br&gt;5x 10 K&lt;br&gt;1x 15 SMD&lt;br&gt;2x 150 SMD</text>
+      <point x="3.5" y="5.56"/>
+      <text>RESISTORS:&lt;br&gt;3x 2.2 K&lt;br&gt;1x 5.6 K&lt;br&gt;1x 8.2 K&lt;br&gt;5x 10 K&lt;br&gt;1x 15 SMD&lt;br&gt;2x 150 SMD</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>LEFT</horizontalAlignment>
@@ -2344,8 +2364,8 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB17</name>
-      <point x="5.035" y="5.77"/>
-      <text>OTHER:&lt;br&gt;1x 2N2222&lt;br&gt;1x 1N4148&lt;br&gt;1x LP2950-33&lt;br&gt;1x ATMEGA88&lt;br&gt;1x PIEZO BUZZER&lt;br&gt;1x 5110 NOKIA SCREEN&lt;br&gt;1x nRF24L01+ RADIO&lt;br&gt;3x TACT BUTTON&lt;br&gt;1x 18650 BATTERY HOLDER&lt;br&gt;2x PIN JUMPER</text>
+      <point x="4.93" y="5.825"/>
+      <text>OTHER:&lt;br&gt;1x 2N2222&lt;br&gt;1x 1N4148&lt;br&gt;1x LP2950-33&lt;br&gt;1x ATMEGA88&lt;br&gt;1x PIEZO BUZZER&lt;br&gt;1x 5110 NOKIA SCREEN&lt;br&gt;1x nRF24L01+ RADIO&lt;br&gt;1x DHT11 TEMP/HUMID SENSOR&lt;br&gt;3x TACT BUTTON&lt;br&gt;1x 18650 BATTERY HOLDER&lt;br&gt;2x PIN JUMPER</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>LEFT</horizontalAlignment>
@@ -2558,14 +2578,14 @@
       <labelOriantation>Directional</labelOriantation>
       <moveLabel>false</moveLabel>
       <hideShortLeads>false</hideShortLeads>
-      <value value="2.2" unit="K"/>
+      <value value="5.6" unit="K"/>
       <power>HALF</power>
       <colorCode>NONE</colorCode>
       <shape>Standard</shape>
     </diylc.passive.Resistor>
     <diylc.misc.Label>
       <name>LAB16</name>
-      <point x="4.2" y="5.615"/>
+      <point x="4.1" y="5.615"/>
       <text>PIN HEADERS:&lt;br&gt;1x 28P SOCKET&lt;br&gt;1x JRC 2P&lt;br&gt;1x 2x5 Shrouded&lt;br&gt;1x 2x4&lt;br&gt;1x 1x8&lt;br&gt;2x 1x3&lt;br&gt;1x 1x4</text>
       <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -2573,52 +2593,72 @@
       <verticalAlignment>TOP</verticalAlignment>
       <orientation>DEFAULT</orientation>
     </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB23</name>
+      <point x="7.9" y="1.9"/>
+      <text>nRF24L01+ Radio</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="0000ff"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB24</name>
+      <point x="4.34" y="3.1"/>
+      <text>DHT-11&lt;br&gt;(Facing back)</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="0000ff"/>
+      <horizontalAlignment>RIGHT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
   </components>
   <groups>
     <set/>
     <set>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[6]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[4]"/>
-    </set>
-    <set>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[8]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[19]"/>
+      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[10]"/>
+      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[11]"/>
+      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[4]"/>
+      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[8]"/>
+      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[5]"/>
+      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[2]"/>
+      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[9]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[2]"/>
+      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[6]"/>
+      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[7]"/>
+      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[3]"/>
+      <diylc.shapes.Rectangle reference="../../../components/diylc.shapes.Rectangle"/>
     </set>
     <set>
       <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[4]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[10]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[9]"/>
-    </set>
-    <set>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[2]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label"/>
-    </set>
-    <set>
       <diylc.misc.Label reference="../../../components/diylc.misc.Label[12]"/>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[5]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[11]"/>
     </set>
     <set>
-      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[8]"/>
-      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[11]"/>
-      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[7]"/>
-      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[2]"/>
-      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[4]"/>
-      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[5]"/>
-      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[3]"/>
-      <diylc.passive.Resistor reference="../../../components/diylc.passive.Resistor[6]"/>
-      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[9]"/>
-      <diylc.shapes.Rectangle reference="../../../components/diylc.shapes.Rectangle"/>
-      <diylc.connectivity.CopperTrace reference="../../../components/diylc.connectivity.CopperTrace[10]"/>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[2]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[13]"/>
     </set>
     <set>
       <diylc.connectivity.SolderPad reference="../../../components/diylc.connectivity.SolderPad[7]"/>
-      <diylc.shapes.Ellipse reference="../../../components/diylc.shapes.Ellipse"/>
       <diylc.connectivity.SolderPad reference="../../../components/diylc.connectivity.SolderPad[8]"/>
+      <diylc.shapes.Ellipse reference="../../../components/diylc.shapes.Ellipse"/>
     </set>
     <set>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[11]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[8]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[21]"/>
+    </set>
+    <set>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[6]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[6]"/>
+    </set>
+    <set>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[3]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[4]"/>
+    </set>
+    <set>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[14]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[5]"/>
     </set>
   </groups>
   <lockedLayers/>
