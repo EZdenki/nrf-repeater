@@ -1,11 +1,20 @@
-/*
-* Arduino Wireless Communication Tutorial
-*       Example 1 - Receiver Code
-*                
-* by Dejan Nedelkovski, www.HowToMechatronics.com
-* 
-* Library: TMRh20/RF24, https://github.com/tmrh20/RF24/
-*/
+//  nRF Repeater Project -- Repeater Module
+//
+//  A simple repeater that receives data packets from sensor transmitter modules and
+//  relays the data packets to the main receiver module (or, potentially later, another
+//  repeater down the line.) Will send a data packet as soon as it it received. Will also
+//  include the battery voltage of the repeater module and will set the RBATLOW bit of
+//  dataType in case the battery voltage is getting low. In case there are no packets to
+//  relay, it will periodically send a heartbeat signal that includes the battery voltage
+//  information.
+//
+//  Based on:
+//  Arduino Wireless Communication Tutorial
+//  by Dejan Nedelkovski, www.HowToMechatronics.com
+//
+//  Library: TMRh20/RF24, https://github.com/tmrh20/RF24/
+//
+//
 
 #include <nrf_repeater_project.h>
 #include <SPI.h>
@@ -13,65 +22,90 @@
 #include <RF24.h>
 
 
-RF24 radio(10, 9); // CE, CSN
-#define ACTLED 8
-#define BATPIN A0
+//  Define IO pins for this project
+#define ACTLEDPIN 8     // Activity LED on D8/P14
+#define BATPIN    A0    // Battery voltage divider output on A0/D14/P23
+#define NRFCEPIN  10    // nRF radio CE pin on D10/P16
+#define NRFCSNPIN 9     // nRF radio CSN pin on D9/P15
 
+//  Define other constants
+#define HBTICKSTO 15000 // Ticks until timout and send heartbeat. 15,000 ticks = ~30 seconds
+#define BATLOWV   2.5   // Indicates the lower voltage before setting the RBATLOW warning bit
+
+//  Instantiate radio object and data packet variables
+RF24 radio( NRFCEPIN, NRFCSNPIN ); // CE, CSN
 SensorStruct_t sensorData;
 
 
-void setup() {
-  analogReference( INTERNAL1V1 );   // Set analog reference to internal 1.1V
+//  ===========================================================================
+//  setup
+//  ===========================================================================
+void setup()
+{
+  //  Set up hardware
+  analogReference( INTERNAL1V1 );         // Set analog reference to internal 1.1V
+  sensorData.sensorID = REPEATER1;        // Set the ID of this module. (REPEATER1 defined in nrf_repeater_project.h)
+  pinMode( ACTLEDPIN, OUTPUT);
 
-  sensorData.sensorID = REPEATER1;
+  radio.begin();                            // Start the radio
+  radio.openReadingPipe( 1, pipeSensor2 );  // Open and set reading pipe for sensor module 2 (Classroom)
+  radio.openWritingPipe( pipeRepeater1 );   // Set pipe of who this module is
+  radio.setPALevel( RF24_PA_MAX );          // Set the radio output level
+  radio.setDataRate( RF24_250KBPS );        // Set data rate
 
-  pinMode(ACTLED, OUTPUT);
-
-  radio.begin();
-  radio.openReadingPipe( 1, pipeSensor1 );
-  radio.openReadingPipe( 2, pipeSensor2 );
-  radio.openWritingPipe( pipeReceiver );
-  radio.setPALevel( RF24_PA_MAX );
-  radio.setDataRate( RF24_250KBPS );
-
-  for( int x=0; x<5; x++ )
+  for( int x=0; x<5; x++ )                  // Flash the activity LED to indicate startup
   {
-    digitalWrite( ACTLED, HIGH );
+    digitalWrite( ACTLEDPIN, HIGH );
     delay(100);
-    digitalWrite(ACTLED, LOW);
+    digitalWrite(ACTLEDPIN, LOW);
     delay(100);
   }
-}
+} // End of setup block
 
-void loop() {
-  float batV;   // Will hold battery voltage of repeater
+
+//  ===========================================================================
+//  loop
+//  ===========================================================================
+
+void loop()
+{
+  unsigned long startTick = ticks();  // To keep track of time for heartbeat
+  unsigned long timePassed;           // Also to keep time, as above
+  float batV;                         // Will hold battery voltage of repeater
+  int nrfGet;                         // Indicates if had gotten data packet from a sensor module
 
   delay( 5 );
-  radio.startListening();
+  radio.startListening();             // Put radio into listening mode
   delay( 5 );
-  while( !radio.available()) ;
-  radio.read( &sensorData, sizeof( sensorData ) );
-  digitalWrite( ACTLED, HIGH );
-  if( !(sensorData.dataType & HB) )
-  {
-    digitalWrite( ACTLED, HIGH );   // Show a short pulse for the heartbeat
-    delay( 50 );
-    digitalWrite( ACTLED, LOW );
-  }
 
-  batV = 0;                   // Start by getting local battery voltage
-  for( int x=0; x<5; x++ )    // Get some analog readings to stabilize
+  //  Wait here until either the a data packet is recieved or until a certain time has passed
+  do
+  { 
+    nrfGet = radio.available();
+    timePassed = ticks() - startTick;
+  } while ( !nrfGet && ( timePassed < HBTICKSTO ) ) ;
+
+  if( nrfGet )                      // If received a data packet, then download the packet
+    radio.read( &sensorData, sizeof( sensorData ) );  // Download the packet
+      
+  batV = 0;                         // Get the local battery voltage for the repeater
+  for( int x=0; x<5; x++ )          // Get some analog readings to stabilize
     analogRead( BATPIN );
-  for( int x=0; x<5; x++ )    // Get average of 5 readings
+  for( int x=0; x<5; x++ )          // Get average of 5 readings
     batV += analogRead( BATPIN );
   batV /= 5;
 
-  sensorData.repeaterBatV = batV/210.0+0.12381;
+  batV = batV /210.0 + 0.12381;      // Convert ADC value to actual voltage
 
-  delay( 50 );
-  digitalWrite( ACTLED, HIGH );
-  delay( 50 );
-  digitalWrite( ACTLED, LOW );
-  radio.stopListening();
+  sensorData.repeaterBatV = batV;
+  if( batV < BATLOWV )                // If the repeater battery voltage is low, then
+    sensorData.dataType |= RBATLOW;   // set the remote battery low bit in the datapacket
+
+  delay( 10 );                        // Blink the activity LED to indicate a transmission
+  digitalWrite( ACTLEDPIN, HIGH );
+  delay( 10 );
+  digitalWrite( ACTLEDPIN, LOW );
+
+  radio.stopListening();              // Turn off listening and then send the data packet.
   radio.write( &sensorData, sizeof( sensorData ) );
-}
+} // End of loop block

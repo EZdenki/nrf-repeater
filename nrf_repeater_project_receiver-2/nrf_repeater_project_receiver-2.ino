@@ -78,11 +78,12 @@ RF24 radio( NRFCEPIN, NRFCSNPIN ); // CE, CSN
 //  LED, Battery monitor, Button Setup
 #define LED1PIN 7     // LED 1 Pin
 #define LED2PIN 8     // LED 2 Pin
+#define LED3PIN 20    // LED 3 Pin
 #define BUT1PIN 16    // Button 1 Pin
 #define BUT2PIN 15    // Button 1 Pin
 #define BATPIN  A0    // Battery Voltage Monitor Pin
 
-
+#define LOWBATV 2.5   // Low-voltage level to trigger battery-change warning.
 
 //  tone2
 //  Generate a generic beeping tone as an alert
@@ -109,19 +110,25 @@ void tone1( void )
 SensorStruct_t sensorData;    // Declare structure to hold received data
 int pingCount1 = 0;           // Holds current ping count for sensor 1
 int pingCount2 = 0;           // Holds current ping count for sensor 1
-int BLState = LOW;
+int BLState = LOW;            // Holds backlight state (LOW = backlight OFF, HIGH = backlight ON)
+int LCDState = LOW;           // Holds current LCD display state (LOW = Normal, HIGH = BAT V display)
+
+float lastRepeaterBatV;
+float lastSensor1BatV;
+float lastSensor2BatV;
 
 // Variable to hold uC Tick counter to detect for timeouts
 extern volatile unsigned long timer0_overflow_count;
 
 
 void setup() {
-  pinMode( LED1PIN, OUTPUT );       // LED 1 Pin as output
-  pinMode( LED2PIN, OUTPUT );       // LED 2 Pin as output
+  pinMode( LED1PIN, OUTPUT );       // LED 1 Pin (for SENSOR1) as output
+  pinMode( LED2PIN, OUTPUT );       // LED 2 Pin (for SENSOR2) as output
+  pinMode( LED3PIN, OUTPUT );       // LED 3 Pin (for Warning) as output
   pinMode( DHT11PIN, INPUT );       // DHT11 Sensor Pin as input
-  pinMode( BUT1PIN, INPUT_PULLUP );
-  pinMode( BUT2PIN, INPUT_PULLUP );
-  pinMode( BL, OUTPUT );
+  pinMode( BUT1PIN, INPUT_PULLUP ); // Button 1 as input with internal pullup
+  pinMode( BUT2PIN, INPUT_PULLUP ); // Button 2 as input with internal pullup
+  pinMode( BL, OUTPUT );            // Pin to drive LCD backlight
   
   analogReference( INTERNAL1V1 );   // Set analog reference to internal 1.1V
 
@@ -135,7 +142,8 @@ void setup() {
 
   //  Set up Radio
   radio.begin();
-  radio.openReadingPipe(1, pipeReceiver);
+  radio.openReadingPipe( 1, pipeRepeater1 );
+  radio.openReadingPipe( 2, pipeSensor1 );
   radio.setPALevel( RF24_PA_LOW );
   radio.setDataRate( RF24_250KBPS );
   radio.startListening();
@@ -143,19 +151,20 @@ void setup() {
   tone1();    // Give an initial beep to let user know the program is starting
 } 
 
+
+//  ==========================================================================
+//  loop
+//  ==========================================================================
 void loop() {
   int temp, humid;
   float batV;
 
-  //  Get temp and humidity readings from DHT11 sensor
+  //  ------------------------------------------------------------------------
+  //  Get Local Temp and Humidity Readings from DHT11 Sensor
+  //  ------------------------------------------------------------------------
   dht11.readTemperatureHumidity( temp, humid );
-
   mylcd.LCDgotoXY( 0, 0 );
-  mylcd.print( "Loc: ");
-  mylcd.print( temp );
-  mylcd.print( "C " );
-  mylcd.print( humid );
-  mylcd.print( "%" );
+  mylcd.print( "Lo ");
 
   batV = 0;                   // Start by getting local battery voltage
   for( int x=0; x<5; x++ )    // Get some analog readings to stabilize
@@ -163,10 +172,38 @@ void loop() {
   for( int x=0; x<5; x++ )    // Get average of 5 readings
     batV += analogRead( BATPIN );
   batV /= 5;
-
-  mylcd.LCDgotoXY(0, 1 );     // Display the battery voltage
   batV = batV / 211.33 + 0.1372;  // Calibration based on test results
-  mylcd.print( batV );
+
+  if( !LCDState )
+  {
+    mylcd.print( temp );
+    mylcd.print( "C " );
+    mylcd.print( humid );
+    mylcd.print( "%  " );
+  }
+  else
+  {
+    mylcd.print( batV );
+    mylcd.print( " V" );
+  }
+
+  mylcd.LCDgotoXY( 11*7, 0 );     // Display the heartbeat or battery voltage mark
+  if( batV < LOWBATV )
+  {
+    digitalWrite( LED3PIN, LOW );
+    mylcd.print( " " );
+    delay( 500 );
+    mylcd.LCDgotoXY( 11*7, 0 );
+    mylcd.print( "B");
+    digitalWrite( LED3PIN, HIGH );
+  }
+  else
+  {
+    mylcd.print( "*" );
+    delay( 500 );
+    mylcd.LCDgotoXY( 11*7, 0 );
+    mylcd.print( " " );
+  }
 
   if( !digitalRead( BUT1PIN ) )
   {
@@ -176,86 +213,196 @@ void loop() {
     while( !digitalRead( BUT1PIN )) ;
   }
 
+  if( !digitalRead( BUT2PIN ) )
+  {
+    LCDState = ~LCDState;
+    mylcd.LCDClear();
+    if( LCDState )
+    {
+      mylcd.LCDgotoXY( 0, 1 );
+      mylcd.print( "FD " );
+      mylcd.print( lastSensor1BatV );
+      mylcd.print( " V" );
+      mylcd.LCDgotoXY( 0, 2 );
+      mylcd.print( "CR " );
+      mylcd.print( lastSensor2BatV );
+      mylcd.print( " V" );
+      mylcd.LCDgotoXY( 0, 5 );
+      mylcd.print( "R  " );
+      mylcd.print( lastRepeaterBatV );
+      mylcd.print( " V" );
+    }
+    
+    while( !digitalRead( BUT2PIN ) ) ;
+  }
 
-  //  ===============================
+  //  ========================================================================
   //  Check Radio for incoming signal
-  //  ===============================
+  //  ========================================================================
   if (radio.available()) {    //  Check radio for data and read in data if available
-    radio.read(&sensorData, sizeof(sensorData));
-    mylcd.print( " R:" );
-    mylcd.print( sensorData.repeaterBatV );
 
-    // ----------------------------------------
-    // Read Sensor 1 (Classroom)
-    // ----------------------------------------
+    radio.read(&sensorData, sizeof(sensorData));    // Get sensor data packet
+
+    if( sensorData.repeaterBatV != 0 )
+    {
+      mylcd.LCDgotoXY( 0, 5 );                      // Display repeater info
+      mylcd.print( "R " );
+      mylcd.LCDgotoXY( 1*7, 5 );
+      lastRepeaterBatV = sensorData.repeaterBatV;  // Hold repeater battery voltage
+    }
+
+    if( sensorData.dataType & RBATLOW )
+    {
+      digitalWrite( LED3PIN, LOW );        // Turn on LED3
+      delay( 1000 );                        // If the repeater battery voltage is low,
+      mylcd.print( "B" );                   // the flash on the "B" sign.
+      digitalWrite( LED3PIN, HIGH );        // Turn on LED3
+    }
+    else
+    {
+      mylcd.print( "*" );
+      delay( 500 );
+      mylcd.LCDgotoXY( 1*7, 5 );
+      mylcd.print( " " );
+    }
+    
+    if( LCDState && (lastRepeaterBatV != 0) )   // Display the repeater battery voltage if this
+    {                                           // packet came from a repeater. If the repeater
+      mylcd.print( " " );                       // battery voltage is zero, then the packet did
+      mylcd.print( lastRepeaterBatV );          // not come from the repeater, and should not be
+      mylcd.print( " V" );                      // displayed.
+    }
+
+    //  ------------------------------------------------------------------------
+    // Read Sensor 1 (Front Door)
+    //  ------------------------------------------------------------------------
     if( sensorData.sensorID == SENSOR1 )
     {
+      lastSensor1BatV = sensorData.sensorBatV;    // Hold battery voltage for Sensor 1
 
-      mylcd.LCDgotoXY(0, 2);
-      mylcd.LCDString("FD:  ");
-      mylcd.print( (int)sensorData.sensorTemp );
-      mylcd.print( "C " );
-      mylcd.print( (int)sensorData.sensorHumid );
-      mylcd.print( "% " );
+      mylcd.LCDgotoXY(0, 1);                      // Display front door (FD) tag
+      mylcd.LCDString("FD ");
 
-      mylcd.LCDgotoXY( 0, 3 );
-      if( sensorData.dataType & HB )
+      if( !LCDState )                             // In normal state, display temp/humidity
       {
-        mylcd.print( "    " );
-        delay( 300 );
-        mylcd.LCDgotoXY( 0, 3 );
-        //mylcd.print( "HB " );
-        mylcd.print( sensorData.batV );
+        mylcd.print( (int)sensorData.sensorTemp );
+        mylcd.print( "C " );
+        mylcd.print( (int)sensorData.sensorHumid );
+        mylcd.print( "%  " );
+
       }
-      else if( sensorData.dataType & PING )
+      else                                          // Otherwise, display battery voltages for the sensor
       {
-        mylcd.print( "PING  PC:" );
-        pingCount1++;
-        mylcd.print( pingCount1 );
+        mylcd.print( lastSensor1BatV );
+        mylcd.print( " V " );
+      }
+
+      if( sensorData.dataType & PING  )   // If got a ping from the sensor module...
+      {
+        pingCount1++;                     // Increase ping counter, but stop at 9
+        if( pingCount1 > 9 )
+          pingCount1 = 9;
         tone1();
       }
-      if( pingCount1 )
-        for( int x=0; x<pingCount1; x++ )
-        {
-          digitalWrite( LED1PIN, LOW );
-          delay( 100 );
-          digitalWrite( LED1PIN, HIGH );
-          delay( 100 );
-        }
+
+      if( pingCount1 )                    // If there is a ping count, then flash it as normally
+      {
+        mylcd.LCDgotoXY( 11*7, 1 );       // ON to indicate a heartbeat.
+        mylcd.print( " " );
+        delay( 500 );
+        mylcd.LCDgotoXY( 11*7, 1 );
+        mylcd.print( pingCount1 );
+        digitalWrite( LED1PIN, LOW );
+        delay( 100 );
+        digitalWrite( LED1PIN, HIGH );
+        delay( 100 );
+      }
+      else
+      {                                 // If no ping count, then flash on a "*" to signal heartbeat.
+        mylcd.LCDgotoXY( 11*7, 1 );
+        mylcd.print( "*" );
+        delay( 500 );
+        mylcd.LCDgotoXY( 11*7, 1 );
+        mylcd.print( " " );
+      }
+
+      if( sensorData.dataType & SBATLOW )  // If the sensor module battery voltage is low,
+      {
+        digitalWrite( LED3PIN, LOW );      // Flash ON LED3 
+        mylcd.LCDgotoXY( 11*7, 1 );        // and flash on the "B" signal
+        mylcd.print( " " );
+        delay( 500 );
+        mylcd.LCDgotoXY( 11*7, 1 );
+        mylcd.print( "B" );
+        digitalWrite( LED3PIN, HIGH );
+      }
+
     }
+
+    //  ------------------------------------------------------------------------
+    //  Read Sensor 2 (Classroom)
+    //  ------------------------------------------------------------------------
     else if( sensorData.sensorID == SENSOR2 )
     {
-      mylcd.LCDgotoXY(0, 4);
-      mylcd.LCDString("CR:  ");
-      mylcd.print( (int)sensorData.sensorTemp );
-      mylcd.print( "C " );
-      mylcd.print( (int)sensorData.sensorHumid );
-      mylcd.print( "% " );
+      lastSensor2BatV = sensorData.sensorBatV;
 
-      mylcd.LCDgotoXY( 0, 5 );
-      if( sensorData.dataType & HB )
+      mylcd.LCDgotoXY(0, 2);
+      mylcd.LCDString("CR ");
+
+      if( !LCDState )
       {
-        mylcd.print( "    " );
-        delay( 300 );
-        mylcd.LCDgotoXY( 0, 5 );
-        //mylcd.print( "HB " );
-        mylcd.print( sensorData.batV );
+        mylcd.print( (int)sensorData.sensorTemp );
+        mylcd.print( "C " );
+        mylcd.print( (int)sensorData.sensorHumid );
+        mylcd.print( "%  " );
       }
-      else if( sensorData.dataType & PING )
+      else
       {
-        mylcd.print( "PING  PC:" );
+        mylcd.print( lastSensor2BatV );
+        mylcd.print( " V " );
+      }
+
+      if( sensorData.dataType & PING )
+      {
         pingCount2++;
-        mylcd.print( pingCount2 );
+        if ( pingCount2 > 9 )
+          pingCount2 = 9;
         tone1();
       }
       if( pingCount2 )
-        for( int x=0; x<pingCount2; x++ )
+      {
+        mylcd.LCDgotoXY( 11*7, 2 );
+        mylcd.print( " " );
+        delay( 500 );
+        mylcd.LCDgotoXY( 11*7, 2 );
+        mylcd.print( pingCount2 );
+        for( int x=0; x<pingCount2; x++ );
         {
           digitalWrite( LED2PIN, LOW );
           delay( 100 );
           digitalWrite( LED2PIN, HIGH );
           delay( 100 );
         }
+      }
+      else
+      {
+        mylcd.LCDgotoXY( 11*7, 2 );
+        mylcd.print( "*" );
+        delay( 500 );
+        mylcd.LCDgotoXY( 11*7, 2 );
+        mylcd.print( " " );
+      }
+
+      if( sensorData.dataType & SBATLOW )
+      {
+        mylcd.LCDgotoXY( 11*7, 2 );
+        mylcd.print( " " );
+        delay( 100 );
+        mylcd.LCDgotoXY( 11*7, 2 );
+        mylcd.print( "B" );
+        digitalWrite( LED3PIN, HIGH );
+      }
+
     }
   }
 }
