@@ -8,7 +8,7 @@
   <title>New Project</title>
   <author>sandy</author>
   <width value="10.0" unit="cm"/>
-  <height value="9.5" unit="cm"/>
+  <height value="9.0" unit="cm"/>
   <gridSpacing value="0.1" unit="in"/>
   <dotSpacing>1</dotSpacing>
   <components>
@@ -128,7 +128,7 @@
     </diylc.connectivity.CopperTrace>
     <diylc.misc.Label>
       <name>LAB3</name>
-      <point x="3.295" y="0.91"/>
+      <point x="3.495" y="0.61"/>
       <text>USBTiny</text>
       <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -155,8 +155,8 @@
     </diylc.connectivity.CurvedTrace>
     <diylc.misc.Label>
       <name>LAB4</name>
-      <point x="2.0" y="0.2"/>
-      <text>nRF Transmitter (V1.1) (PIR)</text>
+      <point x="1.3" y="0.2"/>
+      <text>nRF Transmitter (V1.3)</text>
       <font name="Arial Bold" size="30" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>CENTER</horizontalAlignment>
@@ -165,7 +165,7 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB5</name>
-      <point x="3.3" y="1.6"/>
+      <point x="3.6" y="1.3"/>
       <text>O G I</text>
       <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -713,23 +713,6 @@
         <point x="2.0" y="1.0"/>
         <point x="2.2" y="1.1"/>
         <point x="2.1" y="1.7"/>
-      </controlPoints2>
-      <color hex="0000ff"/>
-      <pointCount>FOUR</pointCount>
-      <style>SOLID</style>
-      <smooth>true</smooth>
-      <lastUpdatePointIndex>-1</lastUpdatePointIndex>
-      <size value="0.5" unit="mm"/>
-      <layer>_2</layer>
-    </diylc.connectivity.CurvedTrace>
-    <diylc.connectivity.CurvedTrace>
-      <name>Trace12</name>
-      <alpha>127</alpha>
-      <controlPoints2>
-        <point x="0.7" y="0.8"/>
-        <point x="0.9" y="0.7"/>
-        <point x="1.0" y="1.0"/>
-        <point x="0.8" y="2.1"/>
       </controlPoints2>
       <color hex="0000ff"/>
       <pointCount>FOUR</pointCount>
@@ -1334,9 +1317,9 @@
       <value>LP2950-33</value>
       <orientation>_270</orientation>
       <controlPoints>
-        <point x="3.2" y="1.5"/>
-        <point x="3.3" y="1.5"/>
-        <point x="3.4" y="1.5"/>
+        <point x="3.5" y="1.2"/>
+        <point x="3.6" y="1.2"/>
+        <point x="3.7" y="1.2"/>
       </controlPoints>
       <bodyColor hex="808080"/>
       <borderColor hex="595959"/>
@@ -1350,11 +1333,11 @@
       <alpha>88</alpha>
       <value></value>
       <controlPoints>
-        <point x="2.605" y="1.665"/>
-        <point x="3.755" y="2.2649999999999997"/>
+        <point x="2.605" y="1.5"/>
+        <point x="3.755" y="2.0999999999999996"/>
       </controlPoints>
-      <firstPoint x="2.605" y="1.665"/>
-      <secondPoint x="3.755" y="2.2649999999999997"/>
+      <firstPoint x="2.605" y="1.5"/>
+      <secondPoint x="3.755" y="2.0999999999999996"/>
       <color hex="ffffff"/>
       <borderColor hex="000000"/>
       <borderThickness value="0.2" unit="mm"/>
@@ -1365,14 +1348,14 @@
       <alpha>127</alpha>
       <orientation>DEFAULT</orientation>
       <controlPoints>
-        <point x="2.705" y="1.765"/>
-        <point x="2.705" y="1.865"/>
-        <point x="2.705" y="1.965"/>
-        <point x="2.705" y="2.065"/>
-        <point x="2.805" y="1.765"/>
-        <point x="2.805" y="1.865"/>
-        <point x="2.805" y="1.965"/>
-        <point x="2.805" y="2.065"/>
+        <point x="2.705" y="1.6"/>
+        <point x="2.705" y="1.7"/>
+        <point x="2.705" y="1.8"/>
+        <point x="2.705" y="1.9"/>
+        <point x="2.805" y="1.6"/>
+        <point x="2.805" y="1.7"/>
+        <point x="2.805" y="1.8"/>
+        <point x="2.805" y="1.9"/>
       </controlPoints>
       <rowCount>2</rowCount>
       <columnCount>4</columnCount>
@@ -1385,8 +1368,8 @@
       <name>LN16</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="2.215"/>
-        <point x="3.705" y="2.115"/>
+        <point x="3.705" y="2.05"/>
+        <point x="3.705" y="1.95"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1421,8 +1404,8 @@
       <name>LN17</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="2.115"/>
-        <point x="3.505" y="2.115"/>
+        <point x="3.705" y="1.95"/>
+        <point x="3.505" y="1.95"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1457,8 +1440,8 @@
       <name>LN18</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.505" y="2.115"/>
-        <point x="3.505" y="2.065"/>
+        <point x="3.505" y="1.95"/>
+        <point x="3.505" y="1.9"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1493,8 +1476,8 @@
       <name>LN19</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.505" y="2.065"/>
-        <point x="3.705" y="2.065"/>
+        <point x="3.505" y="1.9"/>
+        <point x="3.705" y="1.9"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1529,8 +1512,8 @@
       <name>LN20</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="2.065"/>
-        <point x="3.705" y="2.0149999999999997"/>
+        <point x="3.705" y="1.9"/>
+        <point x="3.705" y="1.8499999999999996"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1565,8 +1548,8 @@
       <name>LN21</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="2.0149999999999997"/>
-        <point x="3.505" y="2.0149999999999997"/>
+        <point x="3.705" y="1.8499999999999996"/>
+        <point x="3.505" y="1.8499999999999996"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1601,8 +1584,8 @@
       <name>LN22</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.505" y="2.0149999999999997"/>
-        <point x="3.505" y="1.965"/>
+        <point x="3.505" y="1.8499999999999996"/>
+        <point x="3.505" y="1.8"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1637,8 +1620,8 @@
       <name>LN23</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.505" y="1.965"/>
-        <point x="3.705" y="1.965"/>
+        <point x="3.505" y="1.8"/>
+        <point x="3.705" y="1.8"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1673,8 +1656,8 @@
       <name>LN24</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="1.965"/>
-        <point x="3.705" y="1.915"/>
+        <point x="3.705" y="1.8"/>
+        <point x="3.705" y="1.75"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1709,8 +1692,8 @@
       <name>LN25</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="1.915"/>
-        <point x="3.505" y="1.915"/>
+        <point x="3.705" y="1.75"/>
+        <point x="3.505" y="1.75"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1745,8 +1728,8 @@
       <name>LN26</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.505" y="1.915"/>
-        <point x="3.505" y="1.865"/>
+        <point x="3.505" y="1.75"/>
+        <point x="3.505" y="1.7"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1781,8 +1764,8 @@
       <name>LN27</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.505" y="1.865"/>
-        <point x="3.705" y="1.865"/>
+        <point x="3.505" y="1.7"/>
+        <point x="3.705" y="1.7"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1817,8 +1800,8 @@
       <name>LN28</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="1.865"/>
-        <point x="3.705" y="1.815"/>
+        <point x="3.705" y="1.7"/>
+        <point x="3.705" y="1.65"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1853,8 +1836,8 @@
       <name>LN29</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.705" y="1.815"/>
-        <point x="3.305" y="1.815"/>
+        <point x="3.705" y="1.65"/>
+        <point x="3.305" y="1.65"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1889,8 +1872,8 @@
       <name>LN30</name>
       <alpha>127</alpha>
       <points>
-        <point x="3.405" y="1.815"/>
-        <point x="3.405" y="2.115"/>
+        <point x="3.405" y="1.65"/>
+        <point x="3.405" y="1.95"/>
         <point x="0.0" y="0.0"/>
       </points>
       <bodyColor hex="ffffff"/>
@@ -1949,12 +1932,12 @@
       <alpha>127</alpha>
       <orientation>DEFAULT</orientation>
       <controlPoints>
-        <point x="3.24" y="1.02"/>
-        <point x="3.24" y="1.12"/>
-        <point x="3.24" y="1.22"/>
-        <point x="3.34" y="1.02"/>
-        <point x="3.34" y="1.12"/>
-        <point x="3.34" y="1.22"/>
+        <point x="3.44" y="0.72"/>
+        <point x="3.44" y="0.8200000000000002"/>
+        <point x="3.44" y="0.92"/>
+        <point x="3.54" y="0.72"/>
+        <point x="3.54" y="0.8200000000000002"/>
+        <point x="3.54" y="0.92"/>
       </controlPoints>
       <rowCount>2</rowCount>
       <columnCount>3</columnCount>
@@ -2012,7 +1995,7 @@
     </diylc.passive.Resistor>
     <diylc.misc.Label>
       <name>LAB10</name>
-      <point x="2.875" y="1.925"/>
+      <point x="2.875" y="1.76"/>
       <text>VCC&lt;br&gt;CNS&lt;br&gt;MOSI&lt;br&gt;IRQ</text>
       <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -2022,7 +2005,7 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB11</name>
-      <point x="2.635" y="1.91"/>
+      <point x="2.635" y="1.745"/>
       <text>GND&lt;br&gt;CE&lt;br&gt;SCK&lt;br&gt;MISO</text>
       <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -2032,7 +2015,7 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB8</name>
-      <point x="3.165" y="1.12"/>
+      <point x="3.365" y="0.8200000000000002"/>
       <text>GND&lt;br&gt;MOSI&lt;br&gt;VCC</text>
       <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -2042,7 +2025,7 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB12</name>
-      <point x="3.41" y="1.125"/>
+      <point x="3.61" y="0.825"/>
       <text>RESET&lt;br&gt;CLK&lt;br&gt;MISO</text>
       <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
@@ -2190,7 +2173,7 @@
       <value>ACT</value>
     </diylc.semiconductors.LED>
     <diylc.semiconductors.DIL__IC>
-      <name>ATMEGA88</name>
+      <name>STM32F030</name>
       <alpha>88</alpha>
       <value></value>
       <orientation>_270</orientation>
@@ -2235,25 +2218,6 @@
       <displayNumbers>DIP</displayNumbers>
     </diylc.semiconductors.DIL__IC>
     <diylc.electromechanical.PinHeader>
-      <name>PH1</name>
-      <alpha>127</alpha>
-      <orientation>DEFAULT</orientation>
-      <controlPoints>
-        <point x="0.6" y="0.8"/>
-        <point x="0.6" y="0.9"/>
-        <point x="0.6" y="1.0"/>
-        <point x="0.7" y="0.8"/>
-        <point x="0.7" y="0.9"/>
-        <point x="0.7" y="1.0"/>
-      </controlPoints>
-      <rowCount>2</rowCount>
-      <columnCount>3</columnCount>
-      <spacing value="0.1" unit="in"/>
-      <shrouded>false</shrouded>
-      <bodyColor hex="808080"/>
-      <shroudColor hex="595959"/>
-    </diylc.electromechanical.PinHeader>
-    <diylc.electromechanical.PinHeader>
       <name>PH4</name>
       <alpha>127</alpha>
       <orientation>DEFAULT</orientation>
@@ -2286,7 +2250,7 @@
     </diylc.electromechanical.PinHeader>
     <diylc.electromechanical.PinHeader>
       <name>PH8</name>
-      <alpha>127</alpha>
+      <alpha>101</alpha>
       <orientation>DEFAULT</orientation>
       <controlPoints>
         <point x="1.7" y="0.9"/>
@@ -2327,22 +2291,12 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB7</name>
-      <point x="2.475" y="2.87"/>
-      <text>BOM&lt;br&gt;Resistors:&lt;br&gt;  2 k x 1&lt;br&gt;  10 k x 1&lt;br&gt;  15 k x 1&lt;br&gt;  30 k x 1&lt;br&gt;Capacitors:&lt;br&gt;  100 nF x 1&lt;br&gt;  1.0 uF x 1&lt;br&gt;  2.2 uf x 1&lt;br&gt;Semiconductors:&lt;br&gt;  LP2950-33 x 1&lt;br&gt;  2N2222 equiv.</text>
+      <point x="2.4" y="2.8"/>
+      <text>BOM&lt;br&gt;Resistors:&lt;br&gt;  2.2 k x 2&lt;br&gt;  8.2 k x 1&lt;br&gt;  10 k x 1&lt;br&gt;  15 k x 1&lt;br&gt;  33 k x 1&lt;br&gt;Capacitors:&lt;br&gt;  100 nF x 1&lt;br&gt;  1.0 uF x 1&lt;br&gt;  2.2 uf x 1&lt;br&gt;  10 uF x 1&lt;br&gt;Semiconductors:&lt;br&gt;  LP2950-33 x 1&lt;br&gt;  2N2222 equiv. x 1</text>
       <font name="DejaVu Sans Mono Bold" size="14" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>LEFT</horizontalAlignment>
-      <verticalAlignment>TOP</verticalAlignment>
-      <orientation>DEFAULT</orientation>
-    </diylc.misc.Label>
-    <diylc.misc.Label>
-      <name>LAB17</name>
-      <point x="3.185" y="3.0"/>
-      <text>LED:&lt;br&gt;  3.3 mm Red x 1&lt;br&gt;Sensors:&lt;br&gt;  DHT11 Sensor&lt;br&gt;  PIR Sensor&lt;br&gt;Button:&lt;br&gt;  Tact x 1&lt;br&gt;Socket:&lt;br&gt;  28-pin x 1&lt;br&gt;Pin Headers:	&lt;br&gt;  3x2 male x 1&lt;br&gt;  3x1  male x 1&lt;br&gt;  4x2 female x 1&lt;br&gt;  1x2 JST x1</text>
-      <font name="DejaVu Sans Mono Bold" size="14" style="1"/>
-      <color hex="000000"/>
-      <horizontalAlignment>LEFT</horizontalAlignment>
-      <verticalAlignment>TOP</verticalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
       <orientation>DEFAULT</orientation>
     </diylc.misc.Label>
     <diylc.chassis.RectangularCutout>
@@ -2360,13 +2314,28 @@
       <borderThickness value="0.2" unit="mm"/>
       <edgeRadius value="0.0" unit="mm"/>
     </diylc.chassis.RectangularCutout>
+    <diylc.chassis.RectangularCutout>
+      <name>RECTC2</name>
+      <alpha>101</alpha>
+      <value></value>
+      <controlPoints>
+        <point x="3.24" y="0.11"/>
+        <point x="3.74" y="0.31"/>
+      </controlPoints>
+      <firstPoint x="3.24" y="0.11"/>
+      <secondPoint x="3.74" y="0.31"/>
+      <color hex="0033ff"/>
+      <borderColor hex="33ccff"/>
+      <borderThickness value="0.2" unit="mm"/>
+      <edgeRadius value="0.0" unit="mm"/>
+    </diylc.chassis.RectangularCutout>
     <diylc.connectivity.CopperTrace>
       <name>Trace2</name>
       <alpha>127</alpha>
       <points>
-        <point x="1.1" y="1.5"/>
+        <point x="1.1" y="1.7"/>
         <point x="1.1" y="1.4"/>
-        <point x="1.1" y="1.45"/>
+        <point x="1.1" y="1.55"/>
       </points>
       <bodyColor hex="ffffff"/>
       <borderColor hex="000000"/>
@@ -2480,23 +2449,6 @@
       <thickness value="1.0" unit="mm"/>
       <layer>_1</layer>
     </diylc.connectivity.CopperTrace>
-    <diylc.connectivity.CurvedTrace>
-      <name>Trace20</name>
-      <alpha>127</alpha>
-      <controlPoints2>
-        <point x="1.1" y="1.5"/>
-        <point x="1.0" y="1.5"/>
-        <point x="0.8" y="1.6"/>
-        <point x="0.8" y="1.7"/>
-      </controlPoints2>
-      <color hex="0000ff"/>
-      <pointCount>FOUR</pointCount>
-      <style>SOLID</style>
-      <smooth>true</smooth>
-      <lastUpdatePointIndex>-1</lastUpdatePointIndex>
-      <size value="0.5" unit="mm"/>
-      <layer>_1</layer>
-    </diylc.connectivity.CurvedTrace>
     <diylc.connectivity.CopperTrace>
       <name>Trace21</name>
       <alpha>127</alpha>
@@ -2551,6 +2503,26 @@
       <size value="0.5" unit="mm"/>
       <layer>_1</layer>
     </diylc.connectivity.CurvedTrace>
+    <diylc.connectivity.CopperTrace>
+      <name>Trace20</name>
+      <alpha>127</alpha>
+      <points>
+        <point x="0.9" y="1.7"/>
+        <point x="0.9" y="1.5"/>
+        <point x="0.9" y="1.6"/>
+      </points>
+      <bodyColor hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="000000"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <thickness value="1.0" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CopperTrace>
     <diylc.electromechanical.PinHeader>
       <name>PH2</name>
       <alpha>101</alpha>
@@ -2571,7 +2543,7 @@
     <diylc.semiconductors.TransistorTO92>
       <name>Q2</name>
       <alpha>100</alpha>
-      <value>2N2222 equiv.</value>
+      <value>2N2222</value>
       <orientation>_90</orientation>
       <controlPoints>
         <point x="1.3" y="1.5"/>
@@ -2633,30 +2605,135 @@
       <colorCode>NONE</colorCode>
       <shape>Standard</shape>
     </diylc.passive.Resistor>
-    <diylc.electromechanical.PinHeader>
-      <name>PH3</name>
+    <diylc.passive.Resistor>
+      <name>R4</name>
       <alpha>127</alpha>
-      <orientation>_90</orientation>
-      <controlPoints>
+      <length value="7.0" unit="mm"/>
+      <width value="2.3" unit="mm"/>
+      <points>
+        <point x="0.5" y="1.6"/>
+        <point x="0.9" y="1.6"/>
+        <point x="0.7" y="1.6"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>VALUE</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="8.2" unit="K"/>
+      <power>HALF</power>
+      <colorCode>NONE</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.passive.Resistor>
+      <name>R6</name>
+      <alpha>127</alpha>
+      <length value="7.0" unit="mm"/>
+      <width value="2.3" unit="mm"/>
+      <points>
+        <point x="0.9" y="1.4"/>
+        <point x="0.9" y="1.5"/>
+        <point x="0.9" y="1.45"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>VALUE</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="2.2" unit="K"/>
+      <power>HALF</power>
+      <colorCode>NONE</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.misc.Label>
+      <name>LAB14</name>
+      <point x="1.35" y="2.83"/>
+      <text>V D x G&lt;br&gt;DHT11</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.connectivity.CurvedTrace>
+      <name>Trace12</name>
+      <alpha>127</alpha>
+      <controlPoints2>
+        <point x="0.7" y="0.8"/>
+        <point x="0.9" y="0.7"/>
+        <point x="0.7" y="1.9"/>
+        <point x="0.8" y="2.1"/>
+      </controlPoints2>
+      <color hex="0000ff"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>true</smooth>
+      <lastUpdatePointIndex>-1</lastUpdatePointIndex>
+      <size value="0.5" unit="mm"/>
+      <layer>_2</layer>
+    </diylc.connectivity.CurvedTrace>
+    <diylc.connectivity.CurvedTrace>
+      <name>Trace24</name>
+      <alpha>127</alpha>
+      <controlPoints2>
         <point x="1.3" y="1.2"/>
-        <point x="1.2" y="1.2"/>
-        <point x="1.1" y="1.2"/>
+        <point x="1.4" y="1.2999999999999994"/>
+        <point x="1.4" y="1.5"/>
+        <point x="1.4" y="1.7"/>
+      </controlPoints2>
+      <color hex="0000ff"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>true</smooth>
+      <lastUpdatePointIndex>-1</lastUpdatePointIndex>
+      <size value="0.5" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CurvedTrace>
+    <diylc.electromechanical.PinHeader>
+      <name>PH1</name>
+      <alpha>101</alpha>
+      <orientation>DEFAULT</orientation>
+      <controlPoints>
+        <point x="0.6" y="0.8"/>
+        <point x="0.6" y="0.9"/>
+        <point x="0.6" y="1.0"/>
+        <point x="0.7" y="0.8"/>
+        <point x="0.7" y="0.9"/>
+        <point x="0.7" y="1.0"/>
       </controlPoints>
-      <rowCount>1</rowCount>
+      <rowCount>2</rowCount>
       <columnCount>3</columnCount>
       <spacing value="0.1" unit="in"/>
       <shrouded>false</shrouded>
       <bodyColor hex="808080"/>
       <shroudColor hex="595959"/>
     </diylc.electromechanical.PinHeader>
+    <diylc.misc.Label>
+      <name>LAB17</name>
+      <point x="3.205" y="2.84"/>
+      <text>LED:&lt;br&gt;  3.3 mm Red x 1&lt;br&gt;Button:&lt;br&gt;  Tact x 1&lt;br&gt;Socket:&lt;br&gt;  28-pin x 1&lt;br&gt;Pin Headers:	&lt;br&gt;  3x2 male x 1&lt;br&gt;  3x1 male x 1&lt;br&gt;  4x2 female x 1&lt;br&gt;  1x2 JST x1&lt;br&gt;PIR Sensor x 1&lt;br&gt;DHT11 x 1&lt;br&gt;nRF24L01+ Module</text>
+      <font name="DejaVu Sans Mono Bold" size="14" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
     <diylc.electromechanical.PinHeader>
-      <name>PH9</name>
-      <alpha>127</alpha>
+      <name>PH3</name>
+      <alpha>101</alpha>
       <orientation>_90</orientation>
       <controlPoints>
-        <point x="3.4" y="0.6"/>
-        <point x="3.3" y="0.6"/>
-        <point x="3.2" y="0.6"/>
+        <point x="1.3" y="1.2"/>
+        <point x="1.2" y="1.2"/>
+        <point x="1.1" y="1.2"/>
       </controlPoints>
       <rowCount>1</rowCount>
       <columnCount>3</columnCount>
@@ -2671,9 +2748,9 @@
       <value>2N2222 equiv.</value>
       <orientation>_270</orientation>
       <controlPoints>
-        <point x="2.6" y="1.5"/>
-        <point x="2.7" y="1.5"/>
-        <point x="2.8" y="1.5"/>
+        <point x="3.0" y="1.2"/>
+        <point x="3.1" y="1.2"/>
+        <point x="3.2" y="1.2"/>
       </controlPoints>
       <bodyColor hex="808080"/>
       <borderColor hex="595959"/>
@@ -2682,21 +2759,44 @@
       <folded>false</folded>
       <pinSpacing value="0.1" unit="in"/>
     </diylc.semiconductors.TransistorTO92>
-    <diylc.misc.Label>
-      <name>LAB14</name>
-      <point x="1.35" y="2.83"/>
-      <text>V D x G&lt;br&gt;DHT11 TEMP/HUMID SENSOR</text>
-      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
-      <color hex="000000"/>
-      <horizontalAlignment>CENTER</horizontalAlignment>
-      <verticalAlignment>CENTER</verticalAlignment>
+    <diylc.electromechanical.PinHeader>
+      <name>PH9</name>
+      <alpha>101</alpha>
+      <orientation>_90</orientation>
+      <controlPoints>
+        <point x="2.9" y="0.19"/>
+        <point x="2.8" y="0.19"/>
+        <point x="2.7" y="0.19"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>3</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.electromechanical.PinHeader>
+      <name>PH10</name>
+      <alpha>101</alpha>
       <orientation>DEFAULT</orientation>
-    </diylc.misc.Label>
+      <controlPoints>
+        <point x="3.34" y="0.21"/>
+        <point x="3.44" y="0.21"/>
+        <point x="3.54" y="0.21"/>
+        <point x="3.64" y="0.21"/>
+      </controlPoints>
+      <rowCount>4</rowCount>
+      <columnCount>1</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <bodyColor hex="6699ff"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
     <diylc.misc.Label>
       <name>LAB9</name>
-      <point x="1.2" y="1.1"/>
-      <text>PIR SENSOR</text>
-      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <point x="3.1" y="1.3"/>
+      <text>E  B  C</text>
+      <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>CENTER</horizontalAlignment>
       <verticalAlignment>CENTER</verticalAlignment>
@@ -2704,9 +2804,9 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB15</name>
-      <point x="3.3" y="0.5"/>
-      <text>PIR SENSOR</text>
-      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <point x="2.29" y="0.895"/>
+      <text>nRF24L01+ Module</text>
+      <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>CENTER</horizontalAlignment>
       <verticalAlignment>CENTER</verticalAlignment>
@@ -2714,8 +2814,8 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB16</name>
-      <point x="3.305" y="0.71"/>
-      <text>V  D  G</text>
+      <point x="3.055" y="2.025"/>
+      <text>nRF24L01+ Module</text>
       <font name="Arial Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>CENTER</horizontalAlignment>
@@ -2724,9 +2824,29 @@
     </diylc.misc.Label>
     <diylc.misc.Label>
       <name>LAB18</name>
-      <point x="2.705" y="1.6"/>
-      <text>E  B  C</text>
+      <point x="1.19" y="1.075"/>
+      <text>  PIR&lt;br&gt;V  O  G</text>
       <font name="Arial Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB19</name>
+      <point x="2.8" y="0.325"/>
+      <text>V  O  G&lt;br&gt;PIR SENSOR</text>
+      <font name="Arial Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB20</name>
+      <point x="3.49" y="0.4"/>
+      <text>V D x G&lt;br&gt;DHT11 SENSOR</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
       <color hex="000000"/>
       <horizontalAlignment>CENTER</horizontalAlignment>
       <verticalAlignment>CENTER</verticalAlignment>
@@ -2734,73 +2854,88 @@
     </diylc.misc.Label>
   </components>
   <groups>
+    <set/>
+    <set/>
     <set>
-      <diylc.shapes.Rectangle reference="../../../components/diylc.shapes.Rectangle[2]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[12]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[9]"/>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[6]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[4]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[3]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[6]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[13]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[11]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[5]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[7]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[2]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[8]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[10]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[15]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[14]"/>
-    </set>
-    <set>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[16]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[17]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[19]"/>
       <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[9]"/>
     </set>
     <set>
-      <diylc.semiconductors.TransistorTO92 reference="../../../components/diylc.semiconductors.TransistorTO92"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[3]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[15]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[4]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[7]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[5]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[9]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[2]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[11]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[5]"/>
+      <diylc.shapes.Rectangle reference="../../../components/diylc.shapes.Rectangle[2]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[3]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[6]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[14]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[10]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[12]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[8]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[13]"/>
     </set>
     <set/>
     <set/>
+    <set/>
+    <set/>
+    <set>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[10]"/>
+      <diylc.chassis.RectangularCutout reference="../../../components/diylc.chassis.RectangularCutout[2]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[20]"/>
+    </set>
+    <set>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[19]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[27]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[6]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[24]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[16]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[29]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[30]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[23]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[28]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[17]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[5]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[25]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[26]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[17]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[21]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[22]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[20]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[18]"/>
+      <diylc.shapes.Rectangle reference="../../../components/diylc.shapes.Rectangle[3]"/>
+    </set>
+    <set>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[13]"/>
+      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[6]"/>
+      <diylc.chassis.RectangularCutout reference="../../../components/diylc.chassis.RectangularCutout"/>
+    </set>
+    <set>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[3]"/>
+      <diylc.semiconductors.TransistorTO92 reference="../../../components/diylc.semiconductors.TransistorTO92"/>
+    </set>
     <set>
       <diylc.misc.Label reference="../../../components/diylc.misc.Label"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[7]"/>
       <diylc.misc.Label reference="../../../components/diylc.misc.Label[8]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[7]"/>
       <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[2]"/>
     </set>
     <set/>
     <set>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[20]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[21]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[27]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[22]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[6]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[26]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[28]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[24]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[25]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[19]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[23]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[29]"/>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[16]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[18]"/>
-      <diylc.misc.Label reference="../../../components/diylc.misc.Label[5]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[17]"/>
-      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[30]"/>
-      <diylc.shapes.Rectangle reference="../../../components/diylc.shapes.Rectangle[3]"/>
+      <diylc.misc.Label reference="../../../components/diylc.misc.Label[15]"/>
+      <diylc.semiconductors.TransistorTO92 reference="../../../components/diylc.semiconductors.TransistorTO92[4]"/>
     </set>
-    <set>
-      <diylc.electromechanical.PinHeader reference="../../../components/diylc.electromechanical.PinHeader[7]"/>
-      <diylc.chassis.RectangularCutout reference="../../../components/diylc.chassis.RectangularCutout"/>
-    </set>
+    <set/>
   </groups>
   <lockedLayers/>
   <lockedComponents>
-    <diylc.shapes.Rectangle reference="../../components/diylc.shapes.Rectangle"/>
     <diylc.boards.PerfBoard reference="../../components/diylc.boards.PerfBoard"/>
+    <diylc.shapes.Rectangle reference="../../components/diylc.shapes.Rectangle"/>
   </lockedComponents>
   <hiddenLayers/>
   <font name="Dialog.plain" size="14" style="0"/>
