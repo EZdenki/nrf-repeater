@@ -142,8 +142,9 @@ void setup() {
 
   //  Set up Radio
   radio.begin();
-  radio.openReadingPipe( 1, pipeRepeater1 );
-  radio.openReadingPipe( 2, pipeSensor1 );
+  radio.openReadingPipe( 1, pipeRepeater1 );  // Listen to repeater module
+  radio.openReadingPipe( 2, pipeSensor1 );    // Listen to Front Door Module
+  radio.openReadingPipe( 3, pipeSensor3 );    // Listen to Garden Soil Moisture Module
   radio.setPALevel( RF24_PA_LOW );
   radio.setDataRate( RF24_250KBPS );
   radio.startListening();
@@ -399,6 +400,47 @@ void loop() {
         mylcd.print( " " );
         delay( 100 );
         mylcd.LCDgotoXY( 11*7, 2 );
+        mylcd.print( "B" );
+        digitalWrite( LED3PIN, HIGH );
+      }
+
+    }
+    //  ------------------------------------------------------------------------
+    //  Read Sensor 3 (Garden Soil Moisture Sensor)
+    //  ------------------------------------------------------------------------
+    else if( sensorData.sensorID == SENSOR3 )
+    {
+      lastSensor2BatV = sensorData.sensorBatV;
+
+      mylcd.LCDgotoXY(0, 3);
+      mylcd.LCDString("GS ");
+
+      if( !LCDState )
+      {
+        mylcd.print( (int)sensorData.sensorTemp );
+        mylcd.print( "C " );
+        mylcd.print( (int)sensorData.sensorHumid );
+        mylcd.print( "%  " );
+      }
+      else
+      {
+        //mylcd.print( lastSensor2BatV );
+        mylcd.print( sensorData.sensorMoist );
+        mylcd.print( " M " );
+      }
+
+      mylcd.LCDgotoXY( 11*7, 3 );
+      mylcd.print( "*" );
+      delay( 500 );
+      mylcd.LCDgotoXY( 11*7, 3 );
+      mylcd.print( " " );
+
+      if( sensorData.dataType & SBATLOW )
+      {
+        mylcd.LCDgotoXY( 11*7, 3 );
+        mylcd.print( " " );
+        delay( 100 );
+        mylcd.LCDgotoXY( 11*7, 3 );
         mylcd.print( "B" );
         digitalWrite( LED3PIN, HIGH );
       }
