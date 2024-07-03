@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project>
+  <fileVersion>
+    <major>4</major>
+    <minor>37</minor>
+    <build>0</build>
+  </fileVersion>
+  <title>New Project</title>
+  <author>sandy</author>
+  <width value="4.0" unit="cm"/>
+  <height value="3.0" unit="cm"/>
+  <gridSpacing value="0.1" unit="in"/>
+  <dotSpacing>1</dotSpacing>
+  <components>
+    <diylc.boards.VeroBoard>
+      <name>Board1</name>
+      <alpha>127</alpha>
+      <value></value>
+      <controlPoints>
+        <point x="0.4" y="0.5"/>
+        <point x="1.1" y="1.0"/>
+      </controlPoints>
+      <firstPoint x="0.4" y="0.5"/>
+      <secondPoint x="1.1" y="1.0"/>
+      <boardColor hex="f8ebb3"/>
+      <borderColor hex="ada47d"/>
+      <coordinateColor hex="b6b6b6"/>
+      <xType>Numbers</xType>
+      <coordinateOrigin>Top_Left</coordinateOrigin>
+      <coordinateDisplay>One_Side</coordinateDisplay>
+      <yType>Letters</yType>
+      <length value="20.32" unit="mm"/>
+      <width value="12.7" unit="mm"/>
+      <mode>TwoPoints</mode>
+      <spacing value="0.1" unit="in"/>
+      <stripColor hex="da8a67"/>
+      <orientation>HORIZONTAL</orientation>
+    </diylc.boards.VeroBoard>
+    <diylc.connectivity.CopperTrace>
+      <name>Trace2</name>
+      <alpha>127</alpha>
+      <points>
+        <point x="0.6" y="0.8"/>
+        <point x="0.6" y="0.9"/>
+        <point x="0.6" y="0.85"/>
+      </points>
+      <bodyColor hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="000000"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <thickness value="1.0" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.CopperTrace>
+    <diylc.connectivity.SolderPad>
+      <name>Pad1</name>
+      <size value="0.09" unit="in"/>
+      <color hex="000000"/>
+      <point x="1.0" y="0.8"/>
+      <type>ROUND</type>
+      <holeSize value="0.8" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.SolderPad>
+    <diylc.connectivity.SolderPad>
+      <name>Pad2</name>
+      <size value="0.09" unit="in"/>
+      <color hex="000000"/>
+      <point x="0.5" y="0.8"/>
+      <type>ROUND</type>
+      <holeSize value="0.8" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.SolderPad>
+    <diylc.connectivity.SolderPad>
+      <name>Pad3</name>
+      <size value="0.09" unit="in"/>
+      <color hex="000000"/>
+      <point x="0.5" y="0.7"/>
+      <type>ROUND</type>
+      <holeSize value="0.8" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.SolderPad>
+    <diylc.connectivity.SolderPad>
+      <name>Pad4</name>
+      <size value="0.09" unit="in"/>
+      <color hex="000000"/>
+      <point x="0.5" y="0.6"/>
+      <type>ROUND</type>
+      <holeSize value="0.8" unit="mm"/>
+      <layer>_1</layer>
+    </diylc.connectivity.SolderPad>
+    <diylc.connectivity.Dot>
+      <name>Dot1</name>
+      <size value="1.0" unit="mm"/>
+      <color hex="000000"/>
+      <point x="0.665" y="0.675"/>
+    </diylc.connectivity.Dot>
+    <diylc.connectivity.Dot>
+      <name>Dot2</name>
+      <size value="1.0" unit="mm"/>
+      <color hex="000000"/>
+      <point x="0.74" y="0.72"/>
+    </diylc.connectivity.Dot>
+    <diylc.connectivity.Dot>
+      <name>Dot3</name>
+      <size value="1.0" unit="mm"/>
+      <color hex="000000"/>
+      <point x="0.74" y="0.635"/>
+    </diylc.connectivity.Dot>
+    <diylc.shapes.Polygon>
+      <name>POLY1</name>
+      <alpha>76</alpha>
+      <value></value>
+      <controlPoints>
+        <point x="0.645" y="0.64"/>
+        <point x="0.77" y="0.725"/>
+        <point x="0.795" y="0.685"/>
+        <point x="0.675" y="0.605"/>
+      </controlPoints>
+      <firstPoint x="0.645" y="0.64"/>
+      <secondPoint x="0.77" y="0.725"/>
+      <color hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <borderThickness value="0.2" unit="mm"/>
+      <pointCount>_4</pointCount>
+    </diylc.shapes.Polygon>
+    <diylc.connectivity.Line>
+      <name>LN1</name>
+      <alpha>127</alpha>
+      <points>
+        <point x="0.7033333333333326" y="0.67"/>
+        <point x="0.7" y="0.7383333333333332"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <color hex="ccff00"/>
+      <style>SOLID</style>
+      <thickness value="0.5" unit="mm"/>
+      <arrowSize value="5.0" unit="px"/>
+      <arrowTx serialization="custom">
+        <java.awt.geom.AffineTransform>
+          <default>
+            <m00>1.0</m00>
+            <m01>0.0</m01>
+            <m02>0.0</m02>
+            <m10>0.0</m10>
+            <m11>1.0</m11>
+            <m12>0.0</m12>
+          </default>
+        </java.awt.geom.AffineTransform>
+      </arrowTx>
+      <arrowStart>false</arrowStart>
+      <arrowEnd>false</arrowEnd>
+    </diylc.connectivity.Line>
+    <diylc.smd.SMDResistor>
+      <name>R1</name>
+      <alpha>127</alpha>
+      <value class="org.diylc.core.measures.Resistance" value="4.7" unit="K"/>
+      <orientation>DEFAULT</orientation>
+      <size>_1206</size>
+      <controlPoints>
+        <point x="0.85" y="0.7"/>
+        <point x="0.85" y="0.7944881889763781"/>
+      </controlPoints>
+      <display>VALUE</display>
+      <bodyColor hex="808080"/>
+      <borderColor hex="595959"/>
+      <labelColor hex="ffffff"/>
+    </diylc.smd.SMDResistor>
+    <diylc.connectivity.Dot>
+      <name>Dot4</name>
+      <size value="1.0" unit="mm"/>
+      <color hex="000000"/>
+      <point x="0.545" y="0.305"/>
+    </diylc.connectivity.Dot>
+    <diylc.connectivity.Dot>
+      <name>Dot5</name>
+      <size value="1.0" unit="mm"/>
+      <color hex="000000"/>
+      <point x="0.62" y="0.35"/>
+    </diylc.connectivity.Dot>
+    <diylc.connectivity.Dot>
+      <name>Dot6</name>
+      <size value="1.0" unit="mm"/>
+      <color hex="000000"/>
+      <point x="0.62" y="0.265"/>
+    </diylc.connectivity.Dot>
+    <diylc.shapes.Polygon>
+      <name>POLY2</name>
+      <alpha>76</alpha>
+      <value></value>
+      <controlPoints>
+        <point x="0.525" y="0.27"/>
+        <point x="0.65" y="0.355"/>
+        <point x="0.675" y="0.315"/>
+        <point x="0.555" y="0.235"/>
+      </controlPoints>
+      <firstPoint x="0.525" y="0.27"/>
+      <secondPoint x="0.65" y="0.355"/>
+      <color hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <borderThickness value="0.2" unit="mm"/>
+      <pointCount>_4</pointCount>
+    </diylc.shapes.Polygon>
+    <diylc.connectivity.Line>
+      <name>LN2</name>
+      <alpha>127</alpha>
+      <points>
+        <point x="0.5833333333333326" y="0.3"/>
+        <point x="0.58" y="0.3683333333333331"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <color hex="ccff00"/>
+      <style>SOLID</style>
+      <thickness value="0.5" unit="mm"/>
+      <arrowSize value="5.0" unit="px"/>
+      <arrowTx serialization="custom">
+        <java.awt.geom.AffineTransform>
+          <default>
+            <m00>1.0</m00>
+            <m01>0.0</m01>
+            <m02>0.0</m02>
+            <m10>0.0</m10>
+            <m11>1.0</m11>
+            <m12>0.0</m12>
+          </default>
+        </java.awt.geom.AffineTransform>
+      </arrowTx>
+      <arrowStart>false</arrowStart>
+      <arrowEnd>false</arrowEnd>
+    </diylc.connectivity.Line>
+    <diylc.smd.SMDResistor>
+      <name>R2</name>
+      <alpha>127</alpha>
+      <value class="org.diylc.core.measures.Resistance" value="5.6" unit="K"/>
+      <orientation>DEFAULT</orientation>
+      <size>_1206</size>
+      <controlPoints>
+        <point x="0.755" y="0.8"/>
+        <point x="0.755" y="0.894488188976378"/>
+      </controlPoints>
+      <display>VALUE</display>
+      <bodyColor hex="808080"/>
+      <borderColor hex="595959"/>
+      <labelColor hex="ffffff"/>
+    </diylc.smd.SMDResistor>
+    <diylc.connectivity.Line>
+      <name>LN3</name>
+      <alpha>127</alpha>
+      <points>
+        <point x="0.7033333333333326" y="0.77"/>
+        <point x="0.7" y="0.8383333333333332"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="ffffff"/>
+      <borderColor hex="000000"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOriantation>Directional</labelOriantation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <color hex="ccff00"/>
+      <style>SOLID</style>
+      <thickness value="0.5" unit="mm"/>
+      <arrowSize value="5.0" unit="px"/>
+      <arrowTx serialization="custom">
+        <java.awt.geom.AffineTransform>
+          <default>
+            <m00>1.0</m00>
+            <m01>0.0</m01>
+            <m02>0.0</m02>
+            <m10>0.0</m10>
+            <m11>1.0</m11>
+            <m12>0.0</m12>
+          </default>
+        </java.awt.geom.AffineTransform>
+      </arrowTx>
+      <arrowStart>false</arrowStart>
+      <arrowEnd>false</arrowEnd>
+    </diylc.connectivity.Line>
+    <diylc.misc.Label>
+      <name>LAB1</name>
+      <point x="0.34" y="0.6"/>
+      <text>V</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB2</name>
+      <point x="0.34" y="0.8"/>
+      <text>G</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB3</name>
+      <point x="0.34" y="0.7"/>
+      <text>Oi</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB4</name>
+      <point x="0.49" y="0.315"/>
+      <text>B</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB5</name>
+      <point x="0.67" y="0.41"/>
+      <text>E</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB6</name>
+      <point x="0.665" y="0.245"/>
+      <text>C</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB7</name>
+      <point x="1.165" y="0.8"/>
+      <text>Oo</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB8</name>
+      <point x="0.88" y="0.32"/>
+      <text>2N3904</text>
+      <font name="DejaVu Sans Mono Bold" size="17" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB9</name>
+      <point x="0.795" y="0.1"/>
+      <text>Moisture Sensor Voltage Follower</text>
+      <font name="DejaVu Sans Mono Bold" size="15" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <name>LAB10</name>
+      <point x="0.785" y="0.67"/>
+      <text>2N3904</text>
+      <font name="DejaVu Sans Mono Bold" size="8" style="1"/>
+      <color hex="000000"/>
+      <horizontalAlignment>CENTER</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+  </components>
+  <groups>
+    <set/>
+    <set>
+      <diylc.connectivity.Dot reference="../../../components/diylc.connectivity.Dot[4]"/>
+      <diylc.connectivity.Dot reference="../../../components/diylc.connectivity.Dot[5]"/>
+      <diylc.connectivity.Dot reference="../../../components/diylc.connectivity.Dot[6]"/>
+      <diylc.shapes.Polygon reference="../../../components/diylc.shapes.Polygon[2]"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line[2]"/>
+    </set>
+    <set>
+      <diylc.connectivity.Dot reference="../../../components/diylc.connectivity.Dot[3]"/>
+      <diylc.connectivity.Dot reference="../../../components/diylc.connectivity.Dot"/>
+      <diylc.shapes.Polygon reference="../../../components/diylc.shapes.Polygon"/>
+      <diylc.connectivity.Line reference="../../../components/diylc.connectivity.Line"/>
+      <diylc.connectivity.Dot reference="../../../components/diylc.connectivity.Dot[2]"/>
+    </set>
+  </groups>
+  <lockedLayers/>
+  <lockedComponents/>
+  <hiddenLayers/>
+  <font name="Dialog.plain" size="14" style="0"/>
+</project>
