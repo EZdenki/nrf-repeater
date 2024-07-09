@@ -116,6 +116,7 @@ int LCDState = LOW;           // Holds current LCD display state (LOW = Normal, 
 float lastRepeaterBatV;
 float lastSensor1BatV;
 float lastSensor2BatV;
+float lastSensor3BatV;
 
 // Variable to hold uC Tick counter to detect for timeouts
 extern volatile unsigned long timer0_overflow_count;
@@ -240,18 +241,23 @@ void loop() {
   //  ========================================================================
   //  Check Radio for incoming signal
   //  ========================================================================
-  if (radio.available()) {    //  Check radio for data and read in data if available
+  if (radio.available())
+  {    //  Check radio for data and read in data if available
 
     radio.read(&sensorData, sizeof(sensorData));    // Get sensor data packet
 
     if( sensorData.repeaterBatV != 0 )
     {
-      mylcd.LCDgotoXY( 0, 5 );                      // Display repeater info
-      mylcd.print( "R " );
-      mylcd.LCDgotoXY( 1*7, 5 );
+      mylcd.LCDgotoXY( 0, 5 );                     // Display repeater info
+      mylcd.print( "  " );
+      delay( 500 );
+      mylcd.LCDgotoXY( 0, 5 );
+      mylcd.print( "R  " );
+      //mylcd.LCDgotoXY( 1*7, 5 );
       lastRepeaterBatV = sensorData.repeaterBatV;  // Hold repeater battery voltage
     }
 
+    mylcd.LCDgotoXY( 1*7, 5 );
     if( sensorData.dataType & RBATLOW )
     {
       digitalWrite( LED3PIN, LOW );        // Turn on LED3
@@ -259,17 +265,11 @@ void loop() {
       mylcd.print( "B" );                   // the flash on the "B" sign.
       digitalWrite( LED3PIN, HIGH );        // Turn on LED3
     }
-    else
-    {
-      mylcd.print( "*" );
-      delay( 500 );
-      mylcd.LCDgotoXY( 1*7, 5 );
-      mylcd.print( " " );
-    }
-    
+
+
     if( LCDState && (lastRepeaterBatV != 0) )   // Display the repeater battery voltage if this
     {                                           // packet came from a repeater. If the repeater
-      mylcd.print( " " );                       // battery voltage is zero, then the packet did
+      mylcd.print( "  " );                       // battery voltage is zero, then the packet did
       mylcd.print( lastRepeaterBatV );          // not come from the repeater, and should not be
       mylcd.print( " V" );                      // displayed.
     }
@@ -410,7 +410,7 @@ void loop() {
     //  ------------------------------------------------------------------------
     else if( sensorData.sensorID == SENSOR3 )
     {
-      lastSensor2BatV = sensorData.sensorBatV;
+      lastSensor3BatV = sensorData.sensorBatV;
 
       mylcd.LCDgotoXY(0, 3);
       mylcd.LCDString("GS ");
@@ -424,8 +424,8 @@ void loop() {
       }
       else
       {
-        //mylcd.print( lastSensor2BatV );
-        mylcd.print( sensorData.sensorMoist );
+        mylcd.print( lastSensor3BatV );
+        //mylcd.print( sensorData.sensorMoist );
         mylcd.print( " M " );
       }
 
