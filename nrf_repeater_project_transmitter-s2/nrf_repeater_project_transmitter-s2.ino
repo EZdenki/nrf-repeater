@@ -46,7 +46,7 @@ void flashLED( int LEDPin, int times, int period )
   for( int x=0; x<times; x++ )
   {
     digitalWrite( LEDPin, HIGH );
-    delay( period );
+    delay( 10 );
     digitalWrite( LEDPin, LOW );
     delay( period );
   }
@@ -65,7 +65,7 @@ void setup()
 
   analogReference( INTERNAL1V1 );   // Set the internal 1.1 V reference
 
-  flashLED( ACTLEDPIN, 3, 100 );    // Flash the LED to indicate the module is starting up
+  flashLED( ACTLEDPIN, 5, 150 );    // Flash the LED to indicate the module is starting up
   
   radio.begin();                        // Start the radio
   radio.openWritingPipe(pipeSensor2);   // Set write pipe
@@ -102,7 +102,7 @@ void loop()
   if( !pirGet )                                   // If Got a ping on the sensor
   {
     sensorData.dataType = PING | TEMP | HUMID;    // Send ping, temp, and humid data.
-    flashLED( ACTLEDPIN, 2, 10 );                 // Give a double flash to indicate activity
+    flashLED( ACTLEDPIN, 2, 150 );                 // Give a double flash to indicate activity
   }
   else
   {
@@ -111,13 +111,15 @@ void loop()
   }
 
   batV = 0;
-  for( int x=0; x<10; x++ ) ;     // Let ADC settle
-  for( int x=0; x<10; x++ )
-  {
+  for( int x=0; x<10; x++ )         // Let ADC settle
     batV += analogRead( BATPIN );
-  }
+
+  for( int x=0; x<10; x++ )         // Get real readings to average
+      batV += analogRead( BATPIN );
+
   batV /= (float)10;
-  sensorData.sensorBatV = (float)batV/207.778+0.1294;
+  batV = batV / 207.778+0.1294;
+  sensorData.sensorBatV = batV;
 
   if( batV < BATLOWV )
     sensorData.dataType |= SBATLOW;   // Set battery low bit if battery voltage is low

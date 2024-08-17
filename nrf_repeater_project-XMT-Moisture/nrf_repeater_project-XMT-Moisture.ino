@@ -114,7 +114,8 @@ void loop()
     batV += analogRead( BATPIN );
   }
   batV /= (float)10;
-  sensorData.sensorBatV = (float)batV/197.059 + 0.1994;
+  batV = batV/197.059 + 0.1994;
+  sensorData.sensorBatV = batV;
   //sensorData.sensorBatV = float((int(batV*10))/10);
 
   if( batV < BATLOWV )

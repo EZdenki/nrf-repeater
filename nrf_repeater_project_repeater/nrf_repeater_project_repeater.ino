@@ -78,7 +78,7 @@ void loop()
   radio.startListening();             // Put radio into listening mode
   delay( 5 );
 
-  //  Wait here until either the a data packet is recieved or until a certain time has passed
+  //  Wait here until either the a data packet is recieved or until a certain time has passed.
   do
   { 
     nrfGet = radio.available();
@@ -87,7 +87,13 @@ void loop()
 
   if( nrfGet )                      // If received a data packet, then download the packet
     radio.read( &sensorData, sizeof( sensorData ) );  // Download the packet
-      
+  else
+  {
+    sensorData.dataType = 0;          // Didn't receive a packet, but need to send a heartbeat from the
+    sensorData.sensorID = REPEATER1;  // repeater, so set up a packet to identify the repeater and show
+    sensorData.dataType = HB;         // this as a heartbeat from the repeater.
+  }
+
   batV = 0;                         // Get the local battery voltage for the repeater
   for( int x=0; x<5; x++ )          // Get some analog readings to stabilize
     analogRead( BATPIN );

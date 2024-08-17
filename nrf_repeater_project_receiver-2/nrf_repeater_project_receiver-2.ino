@@ -83,8 +83,8 @@ RF24 radio( NRFCEPIN, NRFCSNPIN ); // CE, CSN
 #define BUT2PIN 15    // Button 1 Pin
 #define BATPIN  A0    // Battery Voltage Monitor Pin
 
-#define LOWBATV 2.5   // Low-voltage level to trigger battery-change warning.
-
+#define LOWBATV 2.7   // Low-voltage level to trigger battery-change warning.
+#define LOOPTICKS 5000    // Number of ticks between local updates
 //  tone2
 //  Generate a generic beeping tone as an alert
 void tone2( void )
@@ -118,8 +118,9 @@ float lastSensor1BatV;
 float lastSensor2BatV;
 float lastSensor3BatV;
 
-// Variable to hold uC Tick counter to detect for timeouts
-extern volatile unsigned long timer0_overflow_count;
+// Variable to hold uC Tick counter to regulate local monitoring period. Setting
+// to zero insures that the local monitor will be checked at startup.
+unsigned long tickerTimeout = 0;
 
 
 void setup() {
@@ -157,65 +158,82 @@ void setup() {
 //  ==========================================================================
 //  loop
 //  ==========================================================================
-void loop() {
+void loop()
+{
   int temp, humid;
   float batV;
 
-  //  ------------------------------------------------------------------------
-  //  Get Local Temp and Humidity Readings from DHT11 Sensor
-  //  ------------------------------------------------------------------------
-  dht11.readTemperatureHumidity( temp, humid );
-  mylcd.LCDgotoXY( 0, 0 );
-  mylcd.print( "Lo ");
-
-  batV = 0;                   // Start by getting local battery voltage
-  for( int x=0; x<5; x++ )    // Get some analog readings to stabilize
-    analogRead( BATPIN );
-  for( int x=0; x<5; x++ )    // Get average of 5 readings
-    batV += analogRead( BATPIN );
-  batV /= 5;
-  batV = batV / 211.33 + 0.1372;  // Calibration based on test results
-
-  if( !LCDState )
+  //  Only check local monitor conditions such as temp, humid, battery after a
+  //  certain period has elapsed, but check the radio and buttons as fast as
+  //  possible.
+  if( ticks() > tickerTimeout )
   {
-    mylcd.print( temp );
-    mylcd.print( "C " );
-    mylcd.print( humid );
-    mylcd.print( "%  " );
-  }
-  else
-  {
-    mylcd.print( batV );
-    mylcd.print( " V" );
-  }
+    //  ------------------------------------------------------------------------
+    //  Get Local Temp and Humidity Readings from DHT11 Sensor
+    //  ------------------------------------------------------------------------
+    dht11.readTemperatureHumidity( temp, humid );
+    mylcd.LCDgotoXY( 0, 0 );
+    mylcd.print( "Lo ");
 
-  mylcd.LCDgotoXY( 11*7, 0 );     // Display the heartbeat or battery voltage mark
-  if( batV < LOWBATV )
-  {
-    digitalWrite( LED3PIN, LOW );
-    mylcd.print( " " );
-    delay( 500 );
-    mylcd.LCDgotoXY( 11*7, 0 );
-    mylcd.print( "B");
-    digitalWrite( LED3PIN, HIGH );
-  }
-  else
-  {
-    mylcd.print( "*" );
-    delay( 500 );
-    mylcd.LCDgotoXY( 11*7, 0 );
-    mylcd.print( " " );
-  }
+    batV = 0;                       // Start by getting local battery voltage
+    for( int x=0; x<5; x++ )        // Get some analog readings to stabilize
+      analogRead( BATPIN );
+    for( int x=0; x<5; x++ )        // Get average of 5 readings
+      batV += analogRead( BATPIN );
+    batV /= 5;
+    batV = batV / 211.33 + 0.1372;  // Calibration based on test results
 
-  if( !digitalRead( BUT1PIN ) )
+    if( !LCDState )
+    {
+      mylcd.print( temp );
+      mylcd.print( "C " );
+      mylcd.print( humid );
+      mylcd.print( "%  " );
+    }
+    else
+    {
+      mylcd.print( batV );
+      mylcd.print( " V" );
+    }
+
+    mylcd.LCDgotoXY( 11*7, 0 );     // Display the heartbeat or battery voltage mark
+    if( batV < LOWBATV )
+    {
+      digitalWrite( LED3PIN, LOW );
+      mylcd.print( " " );
+      delay( 500 );
+      mylcd.LCDgotoXY( 11*7, 0 );
+      mylcd.print( "B");
+      digitalWrite( LED3PIN, HIGH );
+    }
+    else
+    {
+      mylcd.print( "*" );
+      delay( 500 );
+      mylcd.LCDgotoXY( 11*7, 0 );
+      mylcd.print( " " );
+    }
+
+    tickerTimeout = ticks() + LOOPTICKS;  // After checking local monitor,
+                                          // update the tickerTimeout so that
+                                          // it will wait again.
+
+  }  // End of ticker timeout block.
+  
+
+  //  ========================================================================
+  //  Poll buttons and act accordingly
+  //  ========================================================================
+
+  if( !digitalRead( BUT1PIN ) )           // Check button 1
   {
     BLState = ~BLState;
     digitalWrite( BL, BLState );
     delay(1000);
-    while( !digitalRead( BUT1PIN )) ;
+    while( !digitalRead( BUT1PIN )) ;     // Stay here as long as still pressed
   }
 
-  if( !digitalRead( BUT2PIN ) )
+  if( !digitalRead( BUT2PIN ) )           // Check button 2
   {
     LCDState = ~LCDState;
     mylcd.LCDClear();
@@ -235,8 +253,8 @@ void loop() {
       mylcd.print( " V" );
     }
     
-    while( !digitalRead( BUT2PIN ) ) ;
-  }
+    while( !digitalRead( BUT2PIN ) ) ;  // Stay here as long as still pressed
+  } // End of button polling block
 
   //  ========================================================================
   //  Check Radio for incoming signal
@@ -370,6 +388,7 @@ void loop() {
           pingCount2 = 9;
         tone1();
       }
+      
       if( pingCount2 )
       {
         mylcd.LCDgotoXY( 11*7, 2 );
